@@ -1,0 +1,123 @@
+{
+  "eyebrow": "Eat & drink",
+  "title": "Simple food, done properly.",
+  "intro": "Seasonal plates, toasties, wood-fired pizza, and a bar that knows its beer.",
+  "feeNote": "",
+  "sections": [
+    {
+      "id": "to-start",
+      "name": "To start",
+      "items": [
+        {
+          "name": "Smoked mackerel pâté",
+          "description": "Pickled cucumber, soda bread",
+          "price": "8.50"
+        },
+        {
+          "name": "Chicken wings",
+          "description": "Hot sauce or sticky glaze, blue cheese dip",
+          "price": "9.00"
+        },
+        {
+          "name": "Whipped feta",
+          "description": "Honey, chilli, warm flatbread",
+          "price": "7.50"
+        }
+      ]
+    },
+    {
+      "id": "toasted",
+      "name": "Toasted sandwiches",
+      "items": [
+        {
+          "name": "Tuna melt",
+          "description": "Cheddar, red onion, on sourdough",
+          "price": "9.00"
+        },
+        {
+          "name": "BLT toastie",
+          "description": "Bacon, tomato, lettuce, mayo",
+          "price": "8.50"
+        },
+        {
+          "name": "The Hearth melt",
+          "description": "Mature cheddar, caramelised onion, mustard",
+          "price": "8.50"
+        }
+      ]
+    },
+    {
+      "id": "mains",
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Chicken & leek pie",
+          "description": "Puff pastry, mash, greens",
+          "price": "16.50"
+        },
+        {
+          "name": "Catch of the day",
+          "description": "Ask the bar — usually with fries and salad",
+          "price": "18.50"
+        },
+        {
+          "name": "Slow-cooked beef stew",
+          "description": "Root vegetables, herb dumpling",
+          "price": "16.00"
+        },
+        {
+          "name": "Roast cauliflower",
+          "description": "Tahini, pomegranate, flatbread",
+          "price": "14.50"
+        }
+      ]
+    },
+    {
+      "id": "pizza",
+      "name": "Pizza",
+      "items": [
+        {
+          "name": "Margherita",
+          "description": "Tomato, mozzarella, basil",
+          "price": "12.50"
+        },
+        {
+          "name": "Funghi",
+          "description": "Mushroom, thyme, garlic oil",
+          "price": "13.50"
+        },
+        {
+          "name": "Hearth special",
+          "description": "Nduja, mozzarella, honey, rocket",
+          "price": "14.50"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "name": "From the bar",
+      "items": [
+        {
+          "name": "Guinness",
+          "description": "Pint",
+          "price": "5.80"
+        },
+        {
+          "name": "Local craft lager",
+          "description": "Ask what’s on",
+          "price": "6.20"
+        },
+        {
+          "name": "House red / white",
+          "description": "Glass",
+          "price": "6.50"
+        },
+        {
+          "name": "Soft drinks & coffee",
+          "description": "Full list at the bar",
+          "price": "from 3.00"
+        }
+      ]
+    }
+  ]
+}

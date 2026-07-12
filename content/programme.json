@@ -1,0 +1,45 @@
+{
+  "eyebrow": "What’s on",
+  "title": "The week, as we keep it.",
+  "note": "Line-ups can shift — check Instagram for the latest.",
+  "tonightOverride": "",
+  "lineup": [
+    {
+      "day": 4,
+      "dayLabel": "Thu",
+      "name": "Open Mic",
+      "time": "21:00",
+      "kind": "music",
+      "cue": "Open Mic · from 21:00",
+      "detail": "Open Mic Thursdays from 21:00"
+    },
+    {
+      "day": 5,
+      "dayLabel": "Fri",
+      "name": "Trad Session",
+      "time": "21:30",
+      "kind": "music",
+      "cue": "Trad Session · from 21:30",
+      "detail": "Trad Session Fridays from 21:30"
+    },
+    {
+      "day": 6,
+      "dayLabel": "Sat",
+      "name": "Live Band",
+      "time": "22:00",
+      "kind": "music",
+      "cue": "Live Band · from 22:00",
+      "detail": "Live Band Saturdays from 22:00"
+    }
+  ],
+  "board": [
+    {
+      "id": "music",
+      "days": "4,5,6",
+      "label": "Music",
+      "title": "Thu–Sat",
+      "detail": "Open mic, trad, and the weekend band",
+      "href": "#whats-on"
+    }
+  ]
+}

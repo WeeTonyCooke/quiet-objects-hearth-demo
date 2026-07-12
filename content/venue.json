@@ -1,0 +1,67 @@
+{
+  "name": "The Hearth",
+  "tagline": "Cosy bar & restaurant · Moville",
+  "taglineShort": "Bar & restaurant with open fires, proper food, and music at the weekend.",
+  "place": "Moville, Co. Donegal",
+  "address": {
+    "street": "14 Bath Green",
+    "locality": "Moville",
+    "region": "Co. Donegal",
+    "postalCode": "F93 HX42",
+    "country": "Ireland",
+    "landmark": "On Bath Green, a short walk from the village centre"
+  },
+  "phone": "+353 74 937 2140",
+  "email": "hello@thehearth.example",
+  "bookingUrl": "#visit",
+  "bookingNote": "Bookings are for indoor dining only. Outdoor seating is walk-in.",
+  "mapEmbedUrl": "https://www.google.com/maps?q=Moville,+Co.+Donegal&output=embed",
+  "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=Moville,+Co.+Donegal",
+  "hours": [
+    { "days": "Monday – Thursday", "time": "16:00 – 23:00" },
+    { "days": "Friday – Saturday", "time": "15:00 – 00:30" },
+    { "days": "Sunday", "time": "12:30 – 22:00" }
+  ],
+  "hoursSummary": "Open daily from 16:00 · Kitchen until 21:00",
+  "social": {
+    "instagram": "https://instagram.com/",
+    "facebook": "https://facebook.com/"
+  },
+  "giftCards": {
+    "label": "Gift cards",
+    "url": ""
+  },
+  "hero": {
+    "image": "",
+    "imageAlt": "Warm bar interior with wood and low light"
+  },
+  "room": {
+    "eyebrow": "The room",
+    "title": "A corner for pints, plates, and the fire.",
+    "body": "The Hearth is a neighbourhood bar and restaurant — open fires, a proper kitchen, and a welcome that doesn’t hurry you. Come for a midweek plate and a pint; stay for music when the weekend lands.",
+    "image": "",
+    "imageAlt": "Restaurant table with warm ambient lighting"
+  },
+  "visit": {
+    "eyebrow": "Visit",
+    "title": "Find us on Bath Green.",
+    "parkingTip": "Street parking around Bath Green; easier after 18:00."
+  },
+  "ordering": {
+    "enabled": true,
+    "mode": "collection",
+    "eyebrow": "Order pizza",
+    "title": "Collection only.",
+    "intro": "Choose your pizzas online and collect from the bar. We don’t deliver — pay when you pick up.",
+    "menuSectionId": "pizza",
+    "leadMinutes": 30,
+    "kitchenCloses": "21:00",
+    "payNote": "Pay on collection — card or cash.",
+    "minOrder": 0,
+    "successMessage": "Order received. We’ll have it ready for collection."
+  },
+  "credit": {
+    "label": "A Quiet Objects template",
+    "url": "https://quietobjects.ie"
+  }
+}
