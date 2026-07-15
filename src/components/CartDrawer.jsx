@@ -43,6 +43,7 @@ export function CartDrawer({ venue }) {
     setQty,
     clear,
     formatEuro,
+    formatLineMods,
   } = useCart()
 
   const [name, setName] = useState('')
@@ -73,7 +74,11 @@ export function CartDrawer({ venue }) {
     }
 
     const orderLines = items
-      .map((row) => `${row.qty}× ${row.name} (${formatEuro(row.unitPrice * row.qty)})`)
+      .map((row) => {
+        const mods = formatLineMods(row)
+        const label = mods ? `${row.name} (${mods})` : row.name
+        return `${row.qty}× ${label} (${formatEuro(row.unitPrice * row.qty)})`
+      })
       .join('\n')
 
     const payload = {
@@ -157,23 +162,35 @@ export function CartDrawer({ venue }) {
                 <p className="cart-drawer__empty">Your cart is empty. Add a pizza to get started.</p>
               ) : (
                 <ul className="cart-drawer__items">
-                  {items.map((row) => (
-                    <li key={row.name}>
-                      <div>
-                        <strong>{row.name}</strong>
-                        <span>{formatEuro(row.unitPrice)}</span>
-                      </div>
-                      <div className="cart-drawer__qty">
-                        <button type="button" onClick={() => setQty(row.name, row.qty - 1)} aria-label={`Fewer ${row.name}`}>
-                          −
-                        </button>
-                        <span>{row.qty}</span>
-                        <button type="button" onClick={() => setQty(row.name, row.qty + 1)} aria-label={`More ${row.name}`}>
-                          +
-                        </button>
-                      </div>
-                    </li>
-                  ))}
+                  {items.map((row) => {
+                    const mods = formatLineMods(row)
+                    return (
+                      <li key={row.id}>
+                        <div>
+                          <strong>{row.name}</strong>
+                          {mods ? <p className="cart-drawer__mods">{mods}</p> : null}
+                          <span>{formatEuro(row.unitPrice)}</span>
+                        </div>
+                        <div className="cart-drawer__qty">
+                          <button
+                            type="button"
+                            onClick={() => setQty(row.id, row.qty - 1)}
+                            aria-label={`Fewer ${row.name}`}
+                          >
+                            −
+                          </button>
+                          <span>{row.qty}</span>
+                          <button
+                            type="button"
+                            onClick={() => setQty(row.id, row.qty + 1)}
+                            aria-label={`More ${row.name}`}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </li>
+                    )
+                  })}
                 </ul>
               )}
 
@@ -230,7 +247,7 @@ export function CartDrawer({ venue }) {
                     rows="3"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    placeholder="Allergies, extra chilli…"
+                    placeholder="Allergies, collection details…"
                   />
                 </label>
 

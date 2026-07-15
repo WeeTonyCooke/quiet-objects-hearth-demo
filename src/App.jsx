@@ -60,7 +60,7 @@ function AppShell() {
         <Hero venue={venue} />
         <Room venue={venue} />
         <Menu venue={venue} />
-        <OrderPizza venue={venue} />
+        <OrderPizza />
         <WhatsOn venue={venue} />
         <Visit venue={venue} />
       </main>
