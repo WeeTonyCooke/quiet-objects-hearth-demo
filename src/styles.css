@@ -256,13 +256,12 @@ input {
   width: 6.75rem;
   height: 6.75rem;
   border-radius: 50%;
+  border: 1px solid var(--order-pop-border);
   background: var(--order-pop);
   color: var(--order-pop-ink);
   text-decoration: none;
   text-align: center;
-  box-shadow:
-    0 12px 32px rgba(13, 51, 40, 0.35),
-    0 0 0 3px rgba(240, 180, 41, 0.35);
+  box-shadow: 0 10px 28px rgba(15, 58, 49, 0.22);
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s var(--ease);
   animation: order-fab-in 0.7s var(--ease) 0.35s both;
 }
@@ -270,9 +269,7 @@ input {
 .order-fab:hover {
   transform: scale(1.05);
   background: var(--order-pop-hot);
-  box-shadow:
-    0 16px 36px rgba(13, 51, 40, 0.4),
-    0 0 0 4px rgba(240, 180, 41, 0.45);
+  box-shadow: 0 14px 32px rgba(15, 58, 49, 0.28);
 }
 
 .order-fab__text {
