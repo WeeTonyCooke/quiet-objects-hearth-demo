@@ -10,12 +10,12 @@
       "items": [
         {
           "name": "Breaded Mushrooms",
-          "description": "Lightly breaded, served with garlic mayo",
+          "description": "Lightly breaded, garlic mayo",
           "price": "7.50"
         },
         {
           "name": "Seafood Chowder",
-          "description": "Haddock, salmon & smoked fish, with wheaten bread",
+          "description": "Haddock, salmon & smoked fish, wheaten bread",
           "price": "9.50"
         },
         {
@@ -25,34 +25,39 @@
         },
         {
           "name": "Cheesy Pizza Garlic Bread",
-          "description": "9\" / 12\"",
+          "description": "9\" or 12\"",
           "price": "8.50 / 13.50"
         }
       ]
     },
     {
-      "id": "favourites",
-      "name": "Favourites",
+      "id": "mains",
+      "name": "Mains",
       "items": [
         {
           "name": "Steak Burger",
-          "description": "Inishowen beef, applewood cheddar, Ballymaloe relish, rocket & French fried onion",
+          "description": "Inishowen beef, applewood cheddar, Ballymaloe relish",
           "price": "16.95"
         },
         {
           "name": "Battered Haddock",
-          "description": "Light homemade batter, mushy peas & tartare",
+          "description": "Light batter, mushy peas & tartare",
           "price": "17.95"
         },
         {
           "name": "Rosato’s Hot Pot",
-          "description": "Braised beef & vegetables, topped with sliced potato",
+          "description": "Braised beef & vegetables, sliced potato",
           "price": "16.95"
         },
         {
-          "name": "Rosato’s Calzone Burst",
-          "description": "Folded pizza with beef Bolognese & mozzarella",
-          "price": "16.95"
+          "name": "Chicken Italiano",
+          "description": "Pesto, sun-dried tomatoes, goat’s cheese & mozzarella",
+          "price": "18.90"
+        },
+        {
+          "name": "10oz Sirloin Steak",
+          "description": "Inishowen dry-aged beef, sauté onions",
+          "price": "31.95"
         }
       ]
     },
@@ -71,13 +76,43 @@
           "price": "14.50"
         },
         {
+          "name": "BBQ Chicken",
+          "description": "BBQ sauce, chicken & mozzarella",
+          "price": "14.95"
+        },
+        {
           "name": "Taco Chicken",
-          "description": "Cajun chicken, red onion, tomato, basil, rocket, taco sauce & mozzarella",
+          "description": "Cajun chicken, rocket, taco sauce & mozzarella",
           "price": "15.95"
+        },
+        {
+          "name": "Hot ’n’ Spicy Pepperoni",
+          "description": "Pepperoni, chilli flakes, jalapeños & mozzarella",
+          "price": "15.50"
         },
         {
           "name": "Big Irish",
           "description": "Bacon, egg, sausage, tomato & mozzarella",
+          "price": "15.50"
+        },
+        {
+          "name": "Meat Feast",
+          "description": "Pepperoni, salami, chorizo, sausage & mozzarella",
+          "price": "16.50"
+        },
+        {
+          "name": "Rosato’s Calzone Burst",
+          "description": "Folded pizza with beef Bolognese & mozzarella",
+          "price": "16.95"
+        },
+        {
+          "name": "Four Cheese",
+          "description": "Goat’s, Stilton, applewood cheddar & mozzarella",
+          "price": "15.50"
+        },
+        {
+          "name": "Veggie",
+          "description": "Onions, mushroom, peppers, sun-dried tomatoes & mozzarella",
           "price": "15.50"
         }
       ]

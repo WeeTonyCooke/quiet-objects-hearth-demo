@@ -1,11 +1,13 @@
 # Rosato’s — Quiet Objects
 
-Hearth (Option B) shell with Rosato’s Bar & Restaurant, Moville content.
+Hearth (neighbourhood bar) template reskinned for Rosato’s Bar & Restaurant, Moville.
 
 Live: https://rosatos-moville.netlify.app
 
 ```bash
-npx netlify deploy --prod --dir=. --site=rosatos-moville
+npm install
+npm run build
+npx netlify deploy --prod --dir=dist --site=rosatos-moville
 ```
 
 Menu & details from [rosatos.ie](https://rosatos.ie/). Quiet Objects venue site.

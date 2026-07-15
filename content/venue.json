@@ -1,5 +1,5 @@
 {
-  "name": "Rosato's",
+  "name": "Rosato’s",
   "tagline": "Bar & restaurant · Moville",
   "taglineShort": "Family-friendly bar and restaurant with open fires, great grub, and stone-baked pizza.",
   "place": "Moville, Co. Donegal",
@@ -32,15 +32,15 @@
     "url": "https://rosatos.ie/product/gift-card/"
   },
   "hero": {
-    "image": "./images/hero-rosatos.png",
+    "image": "/images/hero.png",
     "imageAlt": "Illustration of Rosato’s red façade on Malin Road, Moville"
   },
   "room": {
     "eyebrow": "The room",
     "title": "Open fires, proper food, and a hundred thousand welcomes.",
     "body": "Rosato’s is a neighbourhood bar and restaurant on Malin Road — stone floors, old wood, and a room that doesn’t hurry you. Irish and Italian plates, stone-baked pizza, and a pint by the fire.",
-    "image": "./images/fire.jpg",
-    "imageAlt": "Open fire at Rosato’s, Moville"
+    "image": "/images/room.jpg",
+    "imageAlt": "Open fire in the hearth at Rosato’s"
   },
   "visit": {
     "eyebrow": "Visit",
@@ -48,15 +48,15 @@
     "parkingTip": "Street parking along Malin Road; easier after the school run."
   },
   "ordering": {
-    "enabled": false,
+    "enabled": true,
     "mode": "collection",
-    "eyebrow": "Takeaway",
-    "title": "Pizza to take away.",
-    "intro": "Ask at the bar for today’s takeaway menu.",
+    "eyebrow": "Order pizza",
+    "title": "Collection only.",
+    "intro": "Choose your pizzas online and collect from the bar. We don’t deliver — pay when you pick up.",
     "menuSectionId": "pizza",
     "leadMinutes": 30,
     "kitchenCloses": "21:00",
-    "payNote": "Pay when you collect — card or cash.",
+    "payNote": "Pay on collection — card or cash.",
     "minOrder": 0,
     "successMessage": "Order received. We’ll have it ready for collection."
   },

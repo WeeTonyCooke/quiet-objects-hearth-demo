@@ -9,20 +9,18 @@
       "dayLabel": "Wed",
       "name": "Texas Hold’em",
       "time": "21:30",
-      "kind": "event",
+      "kind": "poker",
       "cue": "Texas Hold’em · from 21:30",
-      "detail": "Texas Hold’em Poker Wednesdays from 21:30",
-      "href": "#whats-on"
+      "detail": "Texas Hold’em Poker Wednesdays from 21:30"
     },
     {
       "day": 5,
       "dayLabel": "Fri",
       "name": "QuizKings",
       "time": "22:00",
-      "kind": "event",
+      "kind": "quiz",
       "cue": "Fun Quiz · from 22:00",
-      "detail": "QuizKings Fun Quiz Fridays from 22:00",
-      "href": "#whats-on"
+      "detail": "QuizKings Fun Quiz Fridays from 22:00"
     },
     {
       "day": 6,
@@ -31,8 +29,7 @@
       "time": "22:00",
       "kind": "music",
       "cue": "Live Music · from 22:00",
-      "detail": "Live Music Saturdays from 22:00",
-      "href": "#music"
+      "detail": "Live Music Saturdays from 22:00"
     }
   ],
   "board": [
@@ -58,16 +55,7 @@
       "label": "Music",
       "title": "Sat",
       "detail": "Live music from 22:00",
-      "href": "#music"
-    },
-    {
-      "id": "pizza",
-      "days": "0,1,2,3,4,5,6",
-      "label": "Kitchen",
-      "title": "Pizza & plates",
-      "detail": "Stone-baked pizzas and great grub",
-      "href": "#menus",
-      "menuTab": "pizza"
+      "href": "#whats-on"
     }
   ]
 }
