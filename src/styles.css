@@ -467,11 +467,8 @@ input {
 }
 
 .hero--photo {
-  /* Soft radial field so the façade belongs to the room, not a sticker */
-  background:
-    radial-gradient(ellipse 95% 80% at 72% 78%, rgba(26, 74, 64, 0.95) 0%, transparent 58%),
-    radial-gradient(ellipse 70% 55% at 30% 20%, rgba(15, 58, 49, 0.35) 0%, transparent 55%),
-    var(--forest);
+  background-color: var(--forest);
+  /* Sit the façade on the ground plane */
   padding-bottom: 0;
 }
 
@@ -493,9 +490,7 @@ input {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    radial-gradient(ellipse 80% 70% at 50% 72%, rgba(26, 74, 64, 0.55) 0%, transparent 62%),
-    var(--forest);
+  background-color: var(--forest);
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -521,28 +516,8 @@ input {
   align-items: flex-end;
   width: min(100%, 40rem);
   /* Sink slightly past the hero floor so the base reads grounded */
-  margin-bottom: -0.35rem;
-  transform: translateY(0.35rem);
-  padding-bottom: 1.1rem;
-}
-
-/* Soft spotlight behind the building */
-.hero__spotlight {
-  position: absolute;
-  left: -4%;
-  right: -4%;
-  top: 6%;
-  bottom: 10%;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse 58% 68% at 50% 55%,
-    rgba(243, 238, 230, 0.16) 0%,
-    rgba(182, 138, 66, 0.1) 32%,
-    rgba(15, 58, 49, 0.05) 58%,
-    transparent 74%
-  );
-  filter: blur(4px);
+  margin-bottom: -1.15rem;
+  transform: translateY(0.55rem);
 }
 
 .hero--photo .hero__media img {
@@ -554,74 +529,25 @@ input {
   max-height: min(64svh, 34.5rem);
   object-fit: contain;
   object-position: center bottom;
-  filter: drop-shadow(0 10px 18px rgba(15, 58, 49, 0.28));
+  filter: drop-shadow(0 14px 22px rgba(15, 58, 49, 0.28));
   animation:
     hero-fade 1.4s var(--ease) both,
     hero-basket-sway 7.5s ease-in-out 1.6s infinite;
   transform-origin: 50% 100%;
 }
 
-/* Contact shadow pinned under the façade */
+/* Quiet contact only — no spotlight / pavement haze */
 .hero__contact-shadow {
   position: absolute;
-  left: 16%;
-  right: 16%;
-  bottom: 0.55rem;
-  z-index: 1;
-  height: 1.35rem;
-  border-radius: 50%;
-  background: rgba(15, 58, 49, 0.48);
-  filter: blur(10px);
-  pointer-events: none;
-}
-
-/* Hint of pavement under the benches */
-.hero__pavement {
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 0.15rem;
-  z-index: 1;
-  height: 0.95rem;
-  border-radius: 40% / 55%;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(45, 49, 51, 0.08) 0%,
-      rgba(182, 138, 66, 0.14) 45%,
-      rgba(45, 49, 51, 0.22) 100%
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 14px,
-      rgba(45, 49, 51, 0.05) 14px,
-      rgba(45, 49, 51, 0.05) 15px
-    );
-  filter: blur(0.6px);
-  opacity: 0.85;
-  mix-blend-mode: soft-light;
-}
-
-/* Soft reflected brass warmth on the pavement plane */
-.hero__ground-glow {
-  position: absolute;
-  left: 8%;
-  right: 8%;
+  left: 18%;
+  right: 18%;
   bottom: -0.15rem;
-  z-index: 0;
-  height: clamp(2.75rem, 10vw, 5rem);
+  z-index: 1;
+  height: 1rem;
   border-radius: 50%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(182, 138, 66, 0.28) 0%,
-    rgba(182, 138, 66, 0.1) 42%,
-    transparent 74%
-  );
-  filter: blur(8px);
+  background: rgba(15, 58, 49, 0.35);
+  filter: blur(9px);
   pointer-events: none;
-  animation: hero-ground-breathe 6.5s ease-in-out 1.8s infinite;
 }
 
 /* Warm window presence — sits over the façade mid-band */
@@ -634,8 +560,8 @@ input {
   z-index: 3;
   border-radius: 40% 40% 28% 28%;
   background:
-    radial-gradient(ellipse at 35% 45%, rgba(182, 138, 66, 0.24), transparent 62%),
-    radial-gradient(ellipse at 68% 52%, rgba(224, 49, 69, 0.14), transparent 58%);
+    radial-gradient(ellipse at 35% 45%, rgba(182, 138, 66, 0.18), transparent 62%),
+    radial-gradient(ellipse at 68% 52%, rgba(224, 49, 69, 0.1), transparent 58%);
   mix-blend-mode: soft-light;
   pointer-events: none;
   animation: hero-window-warm 5.8s ease-in-out 2s infinite;
@@ -676,9 +602,9 @@ input {
   background: linear-gradient(
     180deg,
     transparent 0%,
-    transparent 42%,
-    rgba(15, 58, 49, 0.55) 72%,
-    rgba(15, 58, 49, 0.82) 100%
+    transparent 36%,
+    rgba(15, 58, 49, 0.88) 70%,
+    rgba(15, 58, 49, 0.96) 100%
   );
 }
 
@@ -696,10 +622,7 @@ input {
     column-gap: clamp(0, 1vw, 0.75rem);
     align-items: end;
     padding-right: clamp(0.25rem, 1.5vw, 1rem);
-    background:
-      radial-gradient(ellipse 85% 75% at 78% 82%, rgba(26, 74, 64, 0.9) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 45% at 22% 30%, rgba(15, 58, 49, 0.4) 0%, transparent 60%),
-      var(--forest);
+    background-color: var(--forest);
   }
 
   .hero--photo .hero__media {
@@ -709,9 +632,7 @@ input {
     grid-row: 1;
     justify-content: flex-start;
     align-items: flex-end;
-    background:
-      radial-gradient(ellipse 75% 65% at 35% 70%, rgba(243, 238, 230, 0.08) 0%, transparent 55%),
-      transparent;
+    background: transparent;
     min-height: calc(100svh - var(--ticker-h));
     height: 100%;
     overflow: visible;
@@ -724,51 +645,23 @@ input {
   .hero__facade {
     width: 112%;
     max-width: none;
-    margin-bottom: -0.85rem;
-    transform: translateY(0.55rem);
-    padding-bottom: 1.35rem;
+    margin-bottom: -1.65rem;
+    transform: translateY(0.85rem);
     justify-content: flex-start;
-  }
-
-  .hero__spotlight {
-    left: -2%;
-    right: 8%;
-    top: 4%;
-    bottom: 8%;
-    background: radial-gradient(
-      ellipse 52% 64% at 42% 52%,
-      rgba(243, 238, 230, 0.18) 0%,
-      rgba(182, 138, 66, 0.11) 34%,
-      transparent 72%
-    );
   }
 
   .hero--photo .hero__media img {
     width: 100%;
     max-height: calc(100svh - var(--ticker-h) + 1.25rem);
     object-position: left bottom;
-    filter: drop-shadow(0 14px 24px rgba(15, 58, 49, 0.3));
+    filter: drop-shadow(0 16px 26px rgba(15, 58, 49, 0.28));
   }
 
   .hero__contact-shadow {
     left: 8%;
     right: 22%;
-    bottom: 0.7rem;
-    height: 1.6rem;
-  }
-
-  .hero__pavement {
-    left: 2%;
-    right: 16%;
-    bottom: 0.2rem;
-    height: 1.15rem;
-  }
-
-  .hero__ground-glow {
-    left: 2%;
-    right: 16%;
     bottom: -0.1rem;
-    height: 5.25rem;
+    height: 1.2rem;
   }
 
   .hero__window-glow {
