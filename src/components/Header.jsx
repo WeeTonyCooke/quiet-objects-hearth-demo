@@ -9,22 +9,27 @@ const KIND_ICON = {
   other: '·',
 }
 
-function TickerIcon({ kind }) {
-  return (
-    <span className="events-ticker__icon" aria-hidden="true">
-      {KIND_ICON[kind] || KIND_ICON.other}
-    </span>
-  )
-}
-
 export function Header({ venue }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [now, setNow] = useState(() => new Date())
+  const [index, setIndex] = useState(0)
   const canOrder = Boolean(venue.ordering?.enabled)
 
   const events = useMemo(() => getTickerItems(venue.programme, now), [venue.programme, now])
-  const tickerItems = events.length ? [...events, ...events, ...events] : []
+  const current = events[index] || null
+
+  useEffect(() => {
+    setIndex(0)
+  }, [events])
+
+  useEffect(() => {
+    if (events.length < 2) return undefined
+    const id = window.setInterval(() => {
+      setIndex((value) => (value + 1) % events.length)
+    }, 4200)
+    return () => window.clearInterval(id)
+  }, [events.length])
 
   useEffect(() => {
     const hero = document.getElementById('top')
@@ -50,7 +55,6 @@ export function Header({ venue }) {
     if (!scrolled && open) setOpen(false)
   }, [scrolled, open])
 
-  // Refresh ribbon content when the calendar day rolls over
   useEffect(() => {
     const tick = () => {
       const next = new Date()
@@ -67,30 +71,27 @@ export function Header({ venue }) {
       <header
         className={`site-header${scrolled ? ' is-scrolled' : ''}${canOrder ? ' has-order-fab' : ''}`}
       >
-        {tickerItems.length ? (
-          <a className="events-ticker" href="#whats-on" onClick={close} aria-label="What’s on this week">
-            <span className="events-ticker__track">
-              {tickerItems.map((item, index) => (
-                <span
-                  className={`events-ticker__item${item.highlight ? ' is-today' : ''}`}
-                  key={`${item.label}-${item.text}-${index}`}
-                >
-                  <TickerIcon kind={item.kind} />
-                  <span className="events-ticker__label">{item.label}</span>
-                  <span className="events-ticker__sep" aria-hidden="true">
-                    /
-                  </span>
-                  <span className="events-ticker__text">{item.text}</span>
-                  <span className="events-ticker__diamond" aria-hidden="true">
-                    ◇
-                  </span>
+        {current ? (
+          <a className="events-cue" href="#whats-on" onClick={close} aria-label="What’s on this week">
+            <span className="events-cue__viewport">
+              <span
+                className={`events-cue__line${current.highlight ? ' is-today' : ''}`}
+                key={`${current.label}-${current.text}-${index}`}
+              >
+                <span className="events-cue__icon" aria-hidden="true">
+                  {KIND_ICON[current.kind] || KIND_ICON.other}
                 </span>
-              ))}
+                <span className="events-cue__label">{current.label}</span>
+                <span className="events-cue__sep" aria-hidden="true">
+                  /
+                </span>
+                <span className="events-cue__text">{current.text}</span>
+              </span>
             </span>
           </a>
         ) : null}
 
-        {/* Landing: ticker only — hamburger/nav appear after scroll */}
+        {/* Landing: cue only — hamburger/nav appear after scroll */}
         <div className="site-header__bar">
           <div className="site-header__inner">
             <a className="site-header__brand" href="#top" onClick={close}>
