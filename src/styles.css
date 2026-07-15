@@ -16,6 +16,10 @@
   --accent: #2b5341;
   --accent-deep: #0d3328;
   --accent-soft: rgba(13, 51, 40, 0.1);
+  /* Order pizza signal — bright so it pops on green */
+  --order-pop: #f0b429;
+  --order-pop-ink: #1c1e1b;
+  --order-pop-hot: #ffc445;
   /* Strong ink — nothing gets lost */
   --ink: #1c1e1b;
   --ink-muted: rgba(28, 30, 27, 0.7);
@@ -37,6 +41,7 @@
 
   --radius: 2px;
   --header-h: 4.25rem;
+  --ticker-h: 2.35rem;
   --max: 72rem;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -135,18 +140,82 @@ input {
   position: sticky;
   top: 0;
   z-index: 40;
-  height: var(--header-h);
-  border-bottom: 1px solid transparent;
   color: var(--hero-ink);
-  background: transparent;
-  transition: background 0.35s var(--ease), border-color 0.35s var(--ease), color 0.35s var(--ease);
+  background: var(--rosato-green);
+  transition: background 0.35s var(--ease), color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
 .site-header.is-scrolled {
-  background: rgba(246, 243, 236, 0.94);
-  border-bottom-color: var(--line);
-  backdrop-filter: blur(12px);
+  background: rgba(246, 243, 236, 0.96);
   color: var(--ink);
+  box-shadow: 0 1px 0 var(--line);
+  backdrop-filter: blur(12px);
+}
+
+/* Continuous week-at-a-glance strip — always across the top */
+.events-ticker {
+  display: block;
+  height: var(--ticker-h);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid rgba(246, 243, 236, 0.18);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.site-header.is-scrolled .events-ticker {
+  border-bottom-color: var(--line);
+  background: rgba(13, 51, 40, 0.06);
+  color: var(--ink);
+}
+
+.events-ticker__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 100%;
+  gap: 0;
+  animation: ticker-roll 32s linear infinite;
+}
+
+.events-ticker:hover .events-ticker__track {
+  animation-play-state: paused;
+}
+
+.events-ticker__item {
+  flex: 0 0 auto;
+  padding: 0 1.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.92;
+}
+
+.events-ticker__item::after {
+  content: '·';
+  margin-left: 1.6rem;
+  opacity: 0.45;
+}
+
+@keyframes ticker-roll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
+/* Brand + nav — hidden on landing so the hero + ticker / pizza fab own the first view */
+.site-header__bar {
+  display: none;
+}
+
+.site-header.is-scrolled .site-header__bar,
+.site-header:has(.site-nav.is-open) .site-header__bar {
+  display: block;
 }
 
 .site-header__inner {
@@ -155,14 +224,13 @@ input {
   align-items: center;
   gap: var(--space-2);
   max-width: var(--max);
-  height: 100%;
+  height: var(--header-h);
   margin: 0 auto;
   padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
-.site-header.has-order-fab .site-header__inner {
-  /* Room for the circular Order pizza fab at top-right */
-  padding-right: calc(4.75rem + 1rem);
+.site-header.has-order-fab.is-scrolled .site-header__inner {
+  padding-right: calc(6.75rem + 1rem);
 }
 
 .site-header__brand {
@@ -176,45 +244,45 @@ input {
   color: inherit;
 }
 
-/* Circular Order pizza — floats top-right over the screen */
+/* Circular Order pizza — bright, large, top-right */
 .order-fab {
   position: fixed;
-  top: max(0.65rem, env(safe-area-inset-top, 0px));
-  right: max(0.65rem, env(safe-area-inset-right, 0px));
+  top: calc(var(--ticker-h) + max(0.45rem, env(safe-area-inset-top, 0px)));
+  right: max(0.55rem, env(safe-area-inset-right, 0px));
   z-index: 55;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4.75rem;
-  height: 4.75rem;
+  width: 6.75rem;
+  height: 6.75rem;
   border-radius: 50%;
-  background: var(--bg);
-  color: var(--accent-deep);
+  background: var(--order-pop);
+  color: var(--order-pop-ink);
   text-decoration: none;
   text-align: center;
   box-shadow:
-    0 10px 28px rgba(13, 51, 40, 0.28),
-    0 0 0 1px rgba(13, 51, 40, 0.08);
+    0 12px 32px rgba(13, 51, 40, 0.35),
+    0 0 0 3px rgba(240, 180, 41, 0.35);
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s var(--ease);
   animation: order-fab-in 0.7s var(--ease) 0.35s both;
 }
 
 .order-fab:hover {
-  transform: scale(1.04);
-  background: #fff;
+  transform: scale(1.05);
+  background: var(--order-pop-hot);
   box-shadow:
-    0 14px 32px rgba(13, 51, 40, 0.32),
-    0 0 0 1px rgba(13, 51, 40, 0.1);
+    0 16px 36px rgba(13, 51, 40, 0.4),
+    0 0 0 4px rgba(240, 180, 41, 0.45);
 }
 
 .order-fab__text {
   display: block;
-  max-width: 3.4rem;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  max-width: 4.4rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  line-height: 1.15;
+  line-height: 1.12;
 }
 
 @keyframes order-fab-in {
@@ -226,54 +294,6 @@ input {
     opacity: 1;
     transform: none;
   }
-}
-
-.tonight-cue {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.05rem;
-  min-width: 0;
-  grid-column: 2;
-  grid-row: 1;
-  margin-inline: 0.15rem 0;
-  padding: 0.15rem 0.55rem;
-  text-decoration: none;
-  color: inherit;
-  border-left: 1px solid var(--line);
-}
-
-.tonight-cue__label {
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.72;
-}
-
-.tonight-cue__line {
-  overflow: hidden;
-  font-size: 0.8rem;
-  font-weight: 500;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  animation: cue-roll 0.55s var(--ease) both;
-}
-
-@keyframes cue-roll {
-  from {
-    opacity: 0;
-    transform: translateY(0.45rem);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.site-header:not(.is-scrolled) .tonight-cue {
-  border-left-color: rgba(246, 243, 236, 0.35);
-  color: var(--hero-ink);
 }
 
 .whats-on__tonight {
@@ -322,8 +342,10 @@ input {
 }
 
 .site-nav {
-  position: fixed;
-  inset: var(--header-h) 0 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -385,11 +407,6 @@ input {
   color: var(--on-accent);
 }
 
-/* First viewport: hero owns Book — hide header Book until scrolled (keep in open drawer) */
-.site-header:not(.is-scrolled) .site-nav:not(.is-open) .site-nav__actions {
-  display: none;
-}
-
 /* Hero */
 
 .hero {
@@ -397,7 +414,7 @@ input {
   display: grid;
   align-items: center;
   min-height: 100svh;
-  padding: calc(var(--header-h) + 2rem) clamp(1rem, 3vw, 2rem) clamp(3rem, 8vw, 5rem);
+  padding: calc(var(--ticker-h) + 1.75rem) clamp(1rem, 3vw, 2rem) clamp(3rem, 8vw, 5rem);
   overflow: hidden;
   color: var(--hero-ink);
 }
@@ -449,6 +466,7 @@ input {
 .hero--photo .hero__content {
   align-self: end;
   padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
+  padding-right: clamp(0, 8vw, 5.5rem);
 }
 
 /* Desktop: bigger façade, closer to copy, base on the hero floor */
@@ -1056,25 +1074,21 @@ input {
     grid-template-columns: auto minmax(0, 1fr) auto;
   }
 
-  .site-header.has-order-fab .site-header__inner {
-    padding-right: calc(4.75rem + 1.25rem);
+  .site-header.has-order-fab.is-scrolled .site-header__inner {
+    padding-right: calc(6.75rem + 1.25rem);
   }
 
   .site-header__toggle {
     display: none;
   }
 
-  .tonight-cue {
-    margin-inline: 0.5rem auto 0;
-    padding: 0.2rem 0.75rem;
+  .events-ticker__item {
+    font-size: 0.82rem;
+    padding: 0 2rem;
   }
 
-  .tonight-cue__label {
-    font-size: 0.68rem;
-  }
-
-  .tonight-cue__line {
-    font-size: 0.88rem;
+  .events-ticker__item::after {
+    margin-left: 2rem;
   }
 
   .site-nav {
@@ -1117,18 +1131,6 @@ input {
     min-height: 2.4rem;
     padding: 0.45rem 0.95rem;
     font-size: 0.92rem;
-  }
-
-  /* On green hero: cream Book when scrolled header isn’t active yet — but Book is hidden then */
-  .site-header:not(.is-scrolled) .site-nav__primary {
-    border-color: var(--bg);
-    background: var(--bg);
-    color: var(--accent-deep);
-  }
-
-  .site-header:not(.is-scrolled) .site-nav__ghost {
-    border-color: rgba(246, 243, 236, 0.55);
-    color: var(--hero-ink);
   }
 
   .site-header.is-scrolled .site-nav__primary {

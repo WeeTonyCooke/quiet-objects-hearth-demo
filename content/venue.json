@@ -1,7 +1,7 @@
 {
   "name": "Rosato\u2019s",
-  "tagline": "Bar & restaurant \u00b7 Moville",
-  "taglineShort": "Family-friendly bar and restaurant with open fires, great grub, and stone-baked pizza.",
+  "tagline": "Cosy bar & restaurant with open fires",
+  "taglineShort": "Cosy bar & restaurant with open fires \u2014 a family-friendly bar serving great food.",
   "place": "Moville, Co. Donegal",
   "address": {
     "street": "7 Malin Road",
@@ -47,7 +47,7 @@
   "room": {
     "eyebrow": "The room",
     "title": "Open fires, proper food, and a hundred thousand welcomes.",
-    "body": "Rosato\u2019s is a neighbourhood bar and restaurant on Malin Road \u2014 stone floors, old wood, and a room that doesn\u2019t hurry you. Irish and Italian plates, stone-baked pizza, and a pint by the fire.",
+    "body": "A cosy bar and restaurant on Malin Road with open fires \u2014 a family-friendly bar serving great food, Irish and Italian plates, and stone-baked pizza.",
     "image": "/images/room.jpg",
     "imageAlt": "Open fire in the stone hearth at Rosato\u2019s"
   },
