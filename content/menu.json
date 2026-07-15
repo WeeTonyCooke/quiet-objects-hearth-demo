@@ -1,7 +1,7 @@
 {
   "eyebrow": "Eat & drink",
-  "title": "Simple food, done properly.",
-  "intro": "Seasonal plates, toasties, wood-fired pizza, and a bar that knows its beer.",
+  "title": "Great grub, done properly.",
+  "intro": "Starters, Inishowen beef, seafood from Greencastle, and 12\" stone-baked pizzas.",
   "feeNote": "",
   "sections": [
     {
@@ -9,66 +9,50 @@
       "name": "To start",
       "items": [
         {
-          "name": "Smoked mackerel pâté",
-          "description": "Pickled cucumber, soda bread",
-          "price": "8.50"
-        },
-        {
-          "name": "Chicken wings",
-          "description": "Hot sauce or sticky glaze, blue cheese dip",
-          "price": "9.00"
-        },
-        {
-          "name": "Whipped feta",
-          "description": "Honey, chilli, warm flatbread",
+          "name": "Breaded Mushrooms",
+          "description": "Lightly breaded, served with garlic mayo",
           "price": "7.50"
+        },
+        {
+          "name": "Seafood Chowder",
+          "description": "Haddock, salmon & smoked fish, with wheaten bread",
+          "price": "9.50"
+        },
+        {
+          "name": "BBQ Ribs",
+          "description": "Half rack, honey dipping sauce",
+          "price": "10.95"
+        },
+        {
+          "name": "Cheesy Pizza Garlic Bread",
+          "description": "9\" / 12\"",
+          "price": "8.50 / 13.50"
         }
       ]
     },
     {
-      "id": "toasted",
-      "name": "Toasted sandwiches",
+      "id": "favourites",
+      "name": "Favourites",
       "items": [
         {
-          "name": "Tuna melt",
-          "description": "Cheddar, red onion, on sourdough",
-          "price": "9.00"
+          "name": "Steak Burger",
+          "description": "Inishowen beef, applewood cheddar, Ballymaloe relish, rocket & French fried onion",
+          "price": "16.95"
         },
         {
-          "name": "BLT toastie",
-          "description": "Bacon, tomato, lettuce, mayo",
-          "price": "8.50"
+          "name": "Battered Haddock",
+          "description": "Light homemade batter, mushy peas & tartare",
+          "price": "17.95"
         },
         {
-          "name": "The Hearth melt",
-          "description": "Mature cheddar, caramelised onion, mustard",
-          "price": "8.50"
-        }
-      ]
-    },
-    {
-      "id": "mains",
-      "name": "Mains",
-      "items": [
-        {
-          "name": "Chicken & leek pie",
-          "description": "Puff pastry, mash, greens",
-          "price": "16.50"
+          "name": "Rosato’s Hot Pot",
+          "description": "Braised beef & vegetables, topped with sliced potato",
+          "price": "16.95"
         },
         {
-          "name": "Catch of the day",
-          "description": "Ask the bar — usually with fries and salad",
-          "price": "18.50"
-        },
-        {
-          "name": "Slow-cooked beef stew",
-          "description": "Root vegetables, herb dumpling",
-          "price": "16.00"
-        },
-        {
-          "name": "Roast cauliflower",
-          "description": "Tahini, pomegranate, flatbread",
-          "price": "14.50"
+          "name": "Rosato’s Calzone Burst",
+          "description": "Folded pizza with beef Bolognese & mozzarella",
+          "price": "16.95"
         }
       ]
     },
@@ -78,18 +62,23 @@
       "items": [
         {
           "name": "Margherita",
-          "description": "Tomato, mozzarella, basil",
-          "price": "12.50"
-        },
-        {
-          "name": "Funghi",
-          "description": "Mushroom, thyme, garlic oil",
+          "description": "Tomato sauce & mozzarella",
           "price": "13.50"
         },
         {
-          "name": "Hearth special",
-          "description": "Nduja, mozzarella, honey, rocket",
+          "name": "Pepperoni",
+          "description": "Pepperoni & mozzarella",
           "price": "14.50"
+        },
+        {
+          "name": "Taco Chicken",
+          "description": "Cajun chicken, red onion, tomato, basil, rocket, taco sauce & mozzarella",
+          "price": "15.95"
+        },
+        {
+          "name": "Big Irish",
+          "description": "Bacon, egg, sausage, tomato & mozzarella",
+          "price": "15.50"
         }
       ]
     },
@@ -100,22 +89,17 @@
         {
           "name": "Guinness",
           "description": "Pint",
-          "price": "5.80"
+          "price": "5.50"
         },
         {
-          "name": "Local craft lager",
-          "description": "Ask what’s on",
-          "price": "6.20"
-        },
-        {
-          "name": "House red / white",
-          "description": "Glass",
-          "price": "6.50"
-        },
-        {
-          "name": "Soft drinks & coffee",
-          "description": "Full list at the bar",
+          "name": "Soft drinks",
+          "description": "Coca-Cola, Football Special & more",
           "price": "from 3.00"
+        },
+        {
+          "name": "Coffee & tea",
+          "description": "Ask at the bar",
+          "price": ""
         }
       ]
     }

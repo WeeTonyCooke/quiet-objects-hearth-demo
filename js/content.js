@@ -52,9 +52,7 @@ function renderLineup(lineup, day, programme) {
   const list = document.querySelector('[data-lineup]')
   if (!list) return
 
-  const rows = Array.isArray(lineup)
-    ? lineup.filter((row) => row.kind === 'music')
-    : []
+  const rows = Array.isArray(lineup) ? lineup : []
 
   list.innerHTML = rows
     .map((row) => {
@@ -70,9 +68,9 @@ function renderLineup(lineup, day, programme) {
   const note = document.querySelector('[data-programme-note]')
   if (note && programme?.note) {
     note.innerHTML = `${escapeHtml(programme.note)} —
-          <a href="https://www.instagram.com/thedublinerboston" target="_blank" rel="noreferrer">check Instagram</a>
+          <a href="https://www.instagram.com/rosatosmoville/" target="_blank" rel="noreferrer">check Instagram</a>
           · Enquiries
-          <a href="mailto:info@thedublinerboston.com">info@thedublinerboston.com</a>`
+          <a href="mailto:rosatosmoville@gmail.com">rosatosmoville@gmail.com</a>`
   }
 
   const title = document.querySelector('[data-programme-title]')

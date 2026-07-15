@@ -1,11 +1,9 @@
-# The Hearth — Quiet Objects demo
+# Rosato’s — Quiet Objects demo
 
-Dubliner Option B shell with The Hearth (Moville) content — Quiet Objects F&B channel demo.
-
-Live: https://thehearthbar.netlify.app
+Hearth (Option B) shell with Rosato’s Bar & Restaurant, Moville content.
 
 ```bash
-npx netlify deploy --prod --dir=. --site=thehearthbar
+npx netlify deploy --prod --dir=.
 ```
 
-Fictional / demo template — Quiet Objects.
+Menu & details from [rosatos.ie](https://rosatos.ie/). Demo template — Quiet Objects.

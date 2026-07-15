@@ -5,41 +5,69 @@
   "tonightOverride": "",
   "lineup": [
     {
-      "day": 4,
-      "dayLabel": "Thu",
-      "name": "Open Mic",
-      "time": "21:00",
-      "kind": "music",
-      "cue": "Open Mic · from 21:00",
-      "detail": "Open Mic Thursdays from 21:00"
+      "day": 3,
+      "dayLabel": "Wed",
+      "name": "Texas Hold’em",
+      "time": "21:30",
+      "kind": "event",
+      "cue": "Texas Hold’em · from 21:30",
+      "detail": "Texas Hold’em Poker Wednesdays from 21:30",
+      "href": "#whats-on"
     },
     {
       "day": 5,
       "dayLabel": "Fri",
-      "name": "Trad Session",
-      "time": "21:30",
-      "kind": "music",
-      "cue": "Trad Session · from 21:30",
-      "detail": "Trad Session Fridays from 21:30"
+      "name": "QuizKings",
+      "time": "22:00",
+      "kind": "event",
+      "cue": "Fun Quiz · from 22:00",
+      "detail": "QuizKings Fun Quiz Fridays from 22:00",
+      "href": "#whats-on"
     },
     {
       "day": 6,
       "dayLabel": "Sat",
-      "name": "Live Band",
+      "name": "Live Music",
       "time": "22:00",
       "kind": "music",
-      "cue": "Live Band · from 22:00",
-      "detail": "Live Band Saturdays from 22:00"
+      "cue": "Live Music · from 22:00",
+      "detail": "Live Music Saturdays from 22:00",
+      "href": "#music"
     }
   ],
   "board": [
     {
-      "id": "music",
-      "days": "4,5,6",
-      "label": "Music",
-      "title": "Thu–Sat",
-      "detail": "Open mic, trad, and the weekend band",
+      "id": "poker",
+      "days": "3",
+      "label": "Poker",
+      "title": "Wed",
+      "detail": "Texas Hold’em from 21:30",
       "href": "#whats-on"
+    },
+    {
+      "id": "quiz",
+      "days": "5",
+      "label": "Quiz",
+      "title": "Fri",
+      "detail": "QuizKings from 22:00",
+      "href": "#whats-on"
+    },
+    {
+      "id": "music",
+      "days": "6",
+      "label": "Music",
+      "title": "Sat",
+      "detail": "Live music from 22:00",
+      "href": "#music"
+    },
+    {
+      "id": "pizza",
+      "days": "0,1,2,3,4,5,6",
+      "label": "Kitchen",
+      "title": "Pizza & plates",
+      "detail": "Stone-baked pizzas and great grub",
+      "href": "#menus",
+      "menuTab": "pizza"
     }
   ]
 }

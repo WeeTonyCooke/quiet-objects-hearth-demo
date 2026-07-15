@@ -1,21 +1,23 @@
-/* The Dubliner — Option B (Hearth / Farrow & Ball)
-   School House White paper · Studio Green · Card Room Green · antique brass */
+/* Rosato’s — Hearth shell
+   Warm paper · façade red · forest green · soft brass */
 
 :root {
-  --paper: #f6f3ec;
-  --paper-deep: #efebe3;
+  --paper: #f3eee6;
+  --paper-deep: #e8e1d6;
   --paper-lift: #ffffff;
-  --green: #878f81;
-  --green-mid: #6f776a;
-  --green-deep: #464c3e;
-  --brass: #a68b4b;
-  --brass-deep: #8a723c;
-  --drop-cloth: #c5bdac;
-  --ink: #1c1e1b;
-  --ink-soft: rgba(28, 30, 27, 0.72);
-  --ink-mute: rgba(28, 30, 27, 0.5);
-  --line: rgba(28, 30, 27, 0.1);
-  --line-strong: rgba(197, 189, 172, 0.85);
+  --green: #3d6b55;
+  --green-mid: #2b5341;
+  --green-deep: #1a3d30;
+  --red: #c51f2d;
+  --red-deep: #9e1722;
+  --brass: #b8954a;
+  --brass-deep: #8f7035;
+  --drop-cloth: #cfc4b3;
+  --ink: #1a1c19;
+  --ink-soft: rgba(26, 28, 25, 0.72);
+  --ink-mute: rgba(26, 28, 25, 0.5);
+  --line: rgba(26, 28, 25, 0.1);
+  --line-strong: rgba(207, 196, 179, 0.9);
   --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
   --font-body: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
   --max: 70rem;
@@ -84,7 +86,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--brass-deep);
+  color: var(--red-deep);
 }
 
 .btn {
@@ -138,7 +140,7 @@ a {
   height: var(--header-h);
   padding: 0 clamp(1rem, 3vw, 2rem);
   color: var(--ink);
-  background: rgba(246, 243, 236, 0.97);
+  background: rgba(243, 238, 230, 0.97);
   border-bottom: 1px solid var(--line-strong);
   backdrop-filter: blur(12px);
 }
@@ -188,8 +190,9 @@ a {
 }
 
 .brand img {
-  width: 2.1rem;
-  height: auto;
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
 }
 
 .site-nav {
@@ -311,7 +314,7 @@ a {
   flex-direction: column;
   justify-content: center;
   padding: clamp(2.5rem, 6vw, 4.25rem) clamp(1.5rem, 4vw, 3.25rem);
-  background: linear-gradient(165deg, #5a6354 0%, var(--green-deep) 52%, #2f342a 100%);
+  background: linear-gradient(165deg, #2f5a45 0%, var(--green-deep) 48%, #0f241c 100%);
   animation: rise 1s var(--ease) both;
 }
 
@@ -325,8 +328,9 @@ a {
   position: relative;
   margin: 0;
   min-height: 44vh;
-  background: #2f342a;
+  background: #7eb6e8;
   overflow: hidden;
+  animation: heroReveal 1.2s var(--ease) 0.15s both;
 }
 
 .hero__media::after {
@@ -334,10 +338,10 @@ a {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  /* Soft left blend + gentle vignette — keeps pour as atmosphere, not a beer ad */
+  /* Soft left blend into the green panel */
   background:
-    linear-gradient(90deg, rgba(47, 52, 42, 0.55) 0%, rgba(47, 52, 42, 0.12) 28%, transparent 48%),
-    linear-gradient(180deg, rgba(28, 30, 27, 0.18) 0%, transparent 35%, rgba(28, 30, 27, 0.28) 100%);
+    linear-gradient(90deg, rgba(15, 36, 28, 0.45) 0%, rgba(15, 36, 28, 0.08) 26%, transparent 46%),
+    linear-gradient(180deg, rgba(26, 61, 48, 0.12) 0%, transparent 40%, rgba(26, 61, 48, 0.18) 100%);
 }
 
 @media (max-width: 899px) {
@@ -348,7 +352,7 @@ a {
 
   .hero__media::after {
     background:
-      linear-gradient(180deg, rgba(28, 30, 27, 0.15) 0%, transparent 40%, rgba(47, 52, 42, 0.45) 100%);
+      linear-gradient(180deg, rgba(15, 36, 28, 0.1) 0%, transparent 42%, rgba(15, 36, 28, 0.35) 100%);
   }
 
   .hero__panel {
@@ -361,9 +365,8 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Pull back from extreme glass-centre crop; show more bar/arm context */
-  object-position: 42% 45%;
-  transform: scale(1.04);
+  object-position: center 55%;
+  transform: scale(1.02);
 }
 
 .hero__place {
@@ -550,6 +553,42 @@ a {
   margin: 1.1rem 0 0;
   max-width: 34rem;
   color: var(--ink-soft);
+}
+
+.room {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(4rem, 10vw, 6.5rem) clamp(1.25rem, 3vw, 2rem);
+}
+
+@media (min-width: 860px) {
+  .room {
+    grid-template-columns: minmax(0, 1.05fr) minmax(14rem, 0.95fr);
+    gap: 3rem;
+  }
+}
+
+.room__copy p {
+  margin: 1.1rem 0 0;
+  max-width: 34rem;
+  color: var(--ink-soft);
+}
+
+.room__media {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  animation: rise 0.9s var(--ease) 0.2s both;
+}
+
+.room__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
 }
 
 .pint {
@@ -1077,7 +1116,7 @@ a {
 }
 
 .footer__brand img {
-  width: 3.5rem;
+  width: 7.5rem;
   height: auto;
 }
 
@@ -1133,6 +1172,17 @@ a {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
