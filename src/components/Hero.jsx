@@ -17,10 +17,6 @@ export function Hero({ venue }) {
               height="1854"
               fetchPriority="high"
             />
-            <span className="hero__window-glow" />
-            <span className="hero__smoke hero__smoke--a" />
-            <span className="hero__smoke hero__smoke--b" />
-            <span className="hero__contact-shadow" />
           </div>
           <div className="hero__veil" />
         </div>
