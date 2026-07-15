@@ -1,34 +1,40 @@
-/* Quiet Objects — neighbourhood bar template
-   Farrow & Ball led: Card Room Green on clean paper.
-   Drop Cloth is trim only — never a page wash. */
+/* Rosato’s — five-colour design language
+   Forest · Cream · Charcoal · Rosato Red · Brass
+   Red stays mostly with the building; accents are quiet. */
 
 :root {
-  /* Clean paper (School House White lifted for screen) */
-  --bg: #f6f3ec;
-  --bg-elevated: #ffffff;
-  --bg-soft: #efebe3;
-  /* Drop Cloth No.283 — trim / hairline only */
-  --drop-cloth: #c5bdac;
-  /* Rosato’s façade green — sampled from the illustration trim */
-  --rosato-green: #0d3328;
-  --rosato-green-mid: #1a4a3a;
-  /* Deep CTA uses Rosato green */
-  --accent: #2b5341;
-  --accent-deep: #0d3328;
-  --accent-soft: rgba(13, 51, 40, 0.1);
-  /* Order pizza badge — cream ground, forest green type */
-  --order-pop: #f3eee6;
-  --order-pop-ink: #0f3a31;
-  --order-pop-border: #0f3a31;
-  --order-pop-hot: #ebe4d8;
-  /* Strong ink — nothing gets lost */
-  --ink: #1c1e1b;
-  --ink-muted: rgba(28, 30, 27, 0.7);
-  --ink-faint: rgba(28, 30, 27, 0.5);
-  --line: rgba(28, 30, 27, 0.1);
-  --line-strong: rgba(197, 189, 172, 0.9);
-  --on-accent: #f6f3ec;
-  --hero-ink: #f6f3ec;
+  /* Primaries — these five only */
+  --forest: #0f3a31;
+  --cream: #f3eee6;
+  --charcoal: #2d3133;
+  --rosato-red: #e03145; /* sampled from the façade brick */
+  --brass: #b68a42;
+
+  /* Roles — alphas are still the five, just quieter */
+  --bg: var(--cream);
+  --bg-elevated: var(--cream);
+  --bg-soft: #ebe6dc; /* cream edged toward forest */
+  --rosato-green: var(--forest);
+  --rosato-green-mid: #1a4a40;
+  --accent: var(--forest);
+  --accent-deep: var(--forest);
+  --accent-soft: rgba(15, 58, 49, 0.1);
+  --order-pop: var(--cream);
+  --order-pop-ink: var(--forest);
+  --order-pop-border: var(--forest);
+  --order-pop-hot: #efe8d8; /* cream + hint of brass */
+  --ink: var(--charcoal);
+  --ink-muted: rgba(45, 49, 51, 0.72);
+  --ink-faint: rgba(45, 49, 51, 0.5);
+  --line: rgba(45, 49, 51, 0.12);
+  --line-strong: rgba(182, 138, 66, 0.55);
+  --on-accent: var(--cream);
+  --hero-ink: var(--cream);
+  --metal: var(--brass);
+  --signal: var(--rosato-red);
+
+  /* Barely-there paper grain for large green fields */
+  --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
 
   --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
   --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
@@ -142,12 +148,12 @@ input {
   top: 0;
   z-index: 40;
   color: var(--hero-ink);
-  background: var(--rosato-green);
+  background: var(--forest);
   transition: background 0.35s var(--ease), color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
 .site-header.is-scrolled {
-  background: rgba(246, 243, 236, 0.96);
+  background: rgba(243, 238, 230, 0.96);
   color: var(--ink);
   box-shadow: 0 1px 0 var(--line);
   backdrop-filter: blur(12px);
@@ -159,15 +165,15 @@ input {
   height: var(--ticker-h);
   overflow: hidden;
   text-decoration: none;
-  color: #e6d7b5;
-  border-bottom: 1px solid rgba(230, 215, 181, 0.16);
-  background: rgba(0, 0, 0, 0.18);
+  color: rgba(182, 138, 66, 0.88);
+  border-bottom: 1px solid rgba(182, 138, 66, 0.22);
+  background: rgba(45, 49, 51, 0.22);
 }
 
 .site-header.is-scrolled .events-ticker {
   border-bottom-color: var(--line);
   background: rgba(15, 58, 49, 0.06);
-  color: #8a7a55;
+  color: rgba(182, 138, 66, 0.85);
 }
 
 .events-ticker__track {
@@ -199,11 +205,11 @@ input {
 
 .events-ticker__item.is-today {
   opacity: 1;
-  color: #f3e6c4;
+  color: #d4b273; /* brass lifted toward cream */
 }
 
 .site-header.is-scrolled .events-ticker__item.is-today {
-  color: #6e5f3d;
+  color: var(--brass);
 }
 
 .events-ticker__icon {
@@ -301,7 +307,7 @@ input {
   color: var(--order-pop-ink);
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 10px 28px rgba(15, 58, 49, 0.22);
+  box-shadow: 0 10px 28px rgba(15, 58, 49, 0.28);
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s var(--ease);
   animation: order-fab-in 0.7s var(--ease) 0.35s both;
 }
@@ -309,7 +315,7 @@ input {
 .order-fab:hover {
   transform: scale(1.05);
   background: var(--order-pop-hot);
-  box-shadow: 0 14px 32px rgba(15, 58, 49, 0.28);
+  box-shadow: 0 14px 32px rgba(15, 58, 49, 0.34);
 }
 
 .order-fab__text {
@@ -338,12 +344,12 @@ input {
 }
 
 .programme__item.is-today {
-  background: rgba(58, 90, 64, 0.08);
-  outline: 1px solid rgba(58, 90, 64, 0.22);
+  background: rgba(224, 49, 69, 0.08);
+  outline: 1px solid rgba(224, 49, 69, 0.28);
 }
 
 .programme__item.is-today .programme__day {
-  color: var(--accent-deep);
+  color: var(--rosato-red);
 }
 
 .site-header__toggle {
@@ -387,7 +393,7 @@ input {
   flex-direction: column;
   gap: var(--space-3);
   padding: var(--space-4) clamp(1rem, 3vw, 2rem);
-  background: rgba(246, 243, 236, 0.98);
+  background: rgba(243, 238, 230, 0.98);
   transform: translateY(-0.5rem);
   opacity: 0;
   pointer-events: none;
@@ -457,25 +463,50 @@ input {
 }
 
 .hero--paint {
-  background: var(--rosato-green);
+  background-color: var(--forest);
 }
 
 .hero--photo {
-  background: var(--rosato-green);
+  background-color: var(--forest);
   /* Sit the façade on the ground plane */
   padding-bottom: 0;
 }
 
-/* Mobile / default: illustration as ground-anchored companion under the copy */
+/* Faint linen/paper grain — enough to break flat digital green */
+.hero--paint::before,
+.hero--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.055;
+  mix-blend-mode: soft-light;
+  background-image: var(--grain);
+  background-size: 180px 180px;
+}
+
 .hero--photo .hero__media {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: var(--rosato-green);
+  background-color: var(--forest);
   display: flex;
   justify-content: center;
   align-items: flex-end;
   overflow: hidden;
+}
+
+.hero--photo .hero__media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+  background-image: var(--grain);
+  background-size: 160px 160px;
 }
 
 .hero__facade {
@@ -498,7 +529,7 @@ input {
   max-height: min(64svh, 34.5rem);
   object-fit: contain;
   object-position: center bottom;
-  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.28));
+  filter: drop-shadow(0 18px 28px rgba(45, 49, 51, 0.32));
   animation:
     hero-fade 1.4s var(--ease) both,
     hero-basket-sway 7.5s ease-in-out 1.6s infinite;
@@ -516,8 +547,8 @@ input {
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(243, 214, 150, 0.34) 0%,
-    rgba(243, 214, 150, 0.12) 42%,
+    rgba(182, 138, 66, 0.34) 0%,
+    rgba(182, 138, 66, 0.12) 42%,
     transparent 72%
   );
   filter: blur(6px);
@@ -535,8 +566,8 @@ input {
   z-index: 2;
   border-radius: 40% 40% 28% 28%;
   background:
-    radial-gradient(ellipse at 35% 45%, rgba(255, 196, 110, 0.22), transparent 62%),
-    radial-gradient(ellipse at 68% 52%, rgba(255, 176, 82, 0.16), transparent 58%);
+    radial-gradient(ellipse at 35% 45%, rgba(182, 138, 66, 0.24), transparent 62%),
+    radial-gradient(ellipse at 68% 52%, rgba(224, 49, 69, 0.14), transparent 58%);
   mix-blend-mode: soft-light;
   pointer-events: none;
   animation: hero-window-warm 5.8s ease-in-out 2s infinite;
@@ -549,7 +580,7 @@ input {
   width: 1.1rem;
   height: 2.4rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(246, 243, 236, 0.35), transparent 70%);
+  background: radial-gradient(circle, rgba(243, 238, 230, 0.35), transparent 70%);
   filter: blur(4px);
   pointer-events: none;
   opacity: 0;
@@ -578,8 +609,8 @@ input {
     180deg,
     transparent 0%,
     transparent 36%,
-    rgba(13, 51, 40, 0.88) 70%,
-    rgba(13, 51, 40, 0.96) 100%
+    rgba(15, 58, 49, 0.88) 70%,
+    rgba(15, 58, 49, 0.96) 100%
   );
 }
 
@@ -624,7 +655,7 @@ input {
     width: 100%;
     max-height: calc(100svh - var(--ticker-h) + 1.25rem);
     object-position: left bottom;
-    filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.26));
+    filter: drop-shadow(0 22px 34px rgba(45, 49, 51, 0.3));
   }
 
   .hero__ground-glow {
@@ -676,7 +707,7 @@ input {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(246, 243, 236, 0.82);
+  color: rgba(243, 238, 230, 0.82);
 }
 
 .hero__name {
@@ -694,7 +725,7 @@ input {
   max-width: 24rem;
   font-size: 1.2rem;
   line-height: 1.65;
-  color: rgba(246, 243, 236, 0.86);
+  color: rgba(243, 238, 230, 0.86);
 }
 
 .hero__actions {
@@ -748,7 +779,7 @@ input {
 }
 
 .btn--primary:hover {
-  background: #4a5046;
+  background: #1a4a40;
   color: var(--on-accent);
 }
 
@@ -758,12 +789,12 @@ input {
 }
 
 .btn--on-hero:hover {
-  background: #fff;
+  background: var(--cream);
   color: var(--ink);
 }
 
 .btn--ghost {
-  border-color: rgba(246, 243, 236, 0.55);
+  border-color: rgba(243, 238, 230, 0.55);
   background: transparent;
   color: var(--hero-ink);
 }
@@ -1584,14 +1615,14 @@ input {
   font: inherit;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(28, 30, 27, 0.18);
+  box-shadow: 0 10px 30px rgba(45, 49, 51, 0.18);
   display: inline-flex;
   align-items: center;
 }
 
 .cart-fab:hover,
 .sticky-order:hover {
-  background: #4a5046;
+  background: #1a4a40;
   color: var(--on-accent);
 }
 
@@ -1624,7 +1655,7 @@ input {
 .cart-drawer__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(28, 30, 27, 0.35);
+  background: rgba(45, 49, 51, 0.35);
   opacity: 0;
   transition: opacity 0.3s var(--ease);
 }
@@ -1764,7 +1795,7 @@ input {
 
 .cart-drawer__error {
   margin: 0;
-  color: #8a3d2f;
+  color: var(--rosato-red);
   font-size: 0.9rem;
 }
 
