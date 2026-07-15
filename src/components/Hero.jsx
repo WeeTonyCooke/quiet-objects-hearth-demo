@@ -9,13 +9,19 @@ export function Hero({ venue }) {
     >
       {hasPhoto ? (
         <div className="hero__media" aria-hidden="true">
-          <img
-            src={venue.hero.image}
-            alt=""
-            width="1854"
-            height="1854"
-            fetchPriority="high"
-          />
+          <div className="hero__facade">
+            <img
+              src={venue.hero.image}
+              alt=""
+              width="1854"
+              height="1854"
+              fetchPriority="high"
+            />
+            <span className="hero__window-glow" />
+            <span className="hero__smoke hero__smoke--a" />
+            <span className="hero__smoke hero__smoke--b" />
+            <span className="hero__ground-glow" />
+          </div>
           <div className="hero__veil" />
         </div>
       ) : null}
