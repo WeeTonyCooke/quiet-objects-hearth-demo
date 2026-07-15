@@ -691,8 +691,9 @@ input {
 
 .hero__tagline {
   margin: var(--space-3) 0 0;
-  max-width: 28rem;
-  font-size: 1.125rem;
+  max-width: 24rem;
+  font-size: 1.2rem;
+  line-height: 1.65;
   color: rgba(246, 243, 236, 0.86);
 }
 
@@ -781,7 +782,7 @@ input {
 }
 
 .section__intro {
-  max-width: 36rem;
+  max-width: 32rem;
   margin-bottom: var(--space-5);
 }
 
@@ -805,8 +806,10 @@ input {
 
 .section__body {
   margin: var(--space-3) 0 0;
+  max-width: 30rem;
   color: var(--ink-muted);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
 }
 
 [data-reveal] {
