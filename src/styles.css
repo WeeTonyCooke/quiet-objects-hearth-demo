@@ -965,57 +965,47 @@ input {
   font-size: 1.45rem;
 }
 
+.visit__address {
+  margin: 0.75rem 0 0;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+
+.visit__directions {
+  margin-top: 0.5rem !important;
+}
+
 .visit__note {
-  margin: 0.65rem 0 var(--space-3);
+  margin: 0.85rem 0 var(--space-3);
   font-size: 0.95rem;
   color: var(--ink-muted);
 }
 
-.book-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.9rem;
-}
-
-.book-form label {
-  display: grid;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  color: var(--ink-muted);
-}
-
-.book-form__full {
-  grid-column: 1 / -1;
-}
-
-.book-form input {
-  width: 100%;
-  padding: 0.7rem 0.8rem;
-  border: 1px solid var(--line-strong);
+.book-widget {
+  overflow: hidden;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--bg-soft);
-  color: var(--ink);
 }
 
-.book-form input:focus {
-  outline: 1px solid var(--accent);
-  border-color: var(--accent);
+.book-widget iframe {
+  display: block;
+  width: 100%;
+  min-height: 40rem;
+  border: 0;
 }
 
-.book-form__confirm {
-  grid-column: 1 / -1;
-  margin: 0;
-  min-height: 1.4em;
+.visit__enquiry {
+  margin: var(--space-3) 0 0;
   font-size: 0.95rem;
-  color: var(--accent);
-  opacity: 0;
-  transform: translateY(0.25rem);
-  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+  line-height: 1.5;
+  color: var(--ink-muted);
 }
 
-.book-form__confirm.is-visible {
-  opacity: 1;
-  transform: none;
+.visit__enquiry a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .visit__map {
