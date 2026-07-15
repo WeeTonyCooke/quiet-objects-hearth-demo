@@ -9,13 +9,13 @@
   --bg-soft: #efebe3;
   /* Drop Cloth No.283 — trim / hairline only */
   --drop-cloth: #c5bdac;
-  /* Rosato’s façade green — brand ground + accents */
-  --rosato-green: #1a3d30;
-  --rosato-green-mid: #2b5341;
-  /* Card Room Green kept as soft secondary; deep CTA uses Rosato green */
-  --accent: #3d6b55;
-  --accent-deep: #1a3d30;
-  --accent-soft: rgba(26, 61, 48, 0.1);
+  /* Rosato’s façade green — sampled from the illustration trim */
+  --rosato-green: #0d3328;
+  --rosato-green-mid: #1a4a3a;
+  /* Deep CTA uses Rosato green */
+  --accent: #2b5341;
+  --accent-deep: #0d3328;
+  --accent-soft: rgba(13, 51, 40, 0.1);
   /* Strong ink — nothing gets lost */
   --ink: #1c1e1b;
   --ink-muted: rgba(28, 30, 27, 0.7);
@@ -357,8 +357,8 @@ input {
   /* Soft left hold for type — green does the work, no heavy wash over the façade */
   background: linear-gradient(
     90deg,
-    rgba(26, 61, 48, 0.55) 0%,
-    rgba(26, 61, 48, 0.2) 38%,
+    rgba(13, 51, 40, 0.55) 0%,
+    rgba(13, 51, 40, 0.2) 38%,
     transparent 58%
   );
 }
@@ -381,8 +381,8 @@ input {
       180deg,
       transparent 0%,
       transparent 42%,
-      rgba(26, 61, 48, 0.88) 72%,
-      rgba(26, 61, 48, 0.96) 100%
+      rgba(13, 51, 40, 0.88) 72%,
+      rgba(13, 51, 40, 0.96) 100%
     );
   }
 
