@@ -563,6 +563,7 @@ input {
     align-self: center;
     max-width: 26rem;
     padding-bottom: clamp(2.5rem, 7vw, 4.5rem);
+    transform: none;
   }
 }
 
