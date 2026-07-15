@@ -6,7 +6,7 @@
   "lineup": [
     {
       "day": 3,
-      "dayLabel": "Wed",
+      "dayLabel": "Wednesday",
       "name": "Texas Hold’em",
       "time": "21:30",
       "kind": "poker",
@@ -15,7 +15,7 @@
     },
     {
       "day": 5,
-      "dayLabel": "Fri",
+      "dayLabel": "Friday",
       "name": "QuizKings",
       "time": "22:00",
       "kind": "quiz",
@@ -24,7 +24,7 @@
     },
     {
       "day": 6,
-      "dayLabel": "Sat",
+      "dayLabel": "Saturday",
       "name": "Live Music",
       "time": "22:00",
       "kind": "music",
@@ -37,7 +37,7 @@
       "id": "poker",
       "days": "3",
       "label": "Poker",
-      "title": "Wed",
+      "title": "Wednesday",
       "detail": "Texas Hold’em · 21:30",
       "href": "#whats-on"
     },
@@ -45,7 +45,7 @@
       "id": "quiz",
       "days": "5",
       "label": "Quiz",
-      "title": "Fri",
+      "title": "Friday",
       "detail": "QuizKings · 22:00",
       "href": "#whats-on"
     },
@@ -53,7 +53,7 @@
       "id": "music",
       "days": "6",
       "label": "Music",
-      "title": "Sat",
+      "title": "Saturday",
       "detail": "Live music · 22:00",
       "href": "#whats-on"
     }

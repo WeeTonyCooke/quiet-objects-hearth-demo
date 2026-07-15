@@ -50,8 +50,10 @@ export function getTonight(programme, now = new Date()) {
 /**
  * Day-aware ribbon items: Tonight leads when there's an event;
  * otherwise a quiet-house cue, then the week from today forward.
- * Format: FRI | MUSIC • 22:00
+ * Format: WEDNESDAY | POKER • 21:30
  */
+const DAY_FULL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
 const KIND_CUE = {
   music: 'Music',
   quiz: 'Quiz',
@@ -73,7 +75,7 @@ export function getTickerItems(programme, now = new Date()) {
 
   const items = upcoming.map((row) => {
     const isToday = Number(row.day) === day
-    const dayPart = (row.dayLabel || 'On').toUpperCase()
+    const dayPart = (DAY_FULL[Number(row.day)] || row.dayLabel || 'On').toUpperCase()
     const kindPart = (KIND_CUE[row.kind] || KIND_CUE.other).toUpperCase()
     const timePart = row.time || ''
     return {

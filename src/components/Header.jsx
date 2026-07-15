@@ -139,13 +139,7 @@ export function Header({ venue }) {
       </header>
 
       {canOrder ? (
-        <a
-          className={`order-fab${scrolled ? ' is-visible' : ''}`}
-          href="#order"
-          aria-label="Order pizza for collection"
-          tabIndex={scrolled ? 0 : -1}
-          aria-hidden={!scrolled}
-        >
+        <a className="order-fab" href="#order" aria-label="Order pizza for collection">
           <span className="order-fab__text">
             Order
             <br />

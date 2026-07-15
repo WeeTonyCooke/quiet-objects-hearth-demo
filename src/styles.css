@@ -162,12 +162,14 @@ input {
   align-items: center;
   justify-content: center;
   height: var(--ticker-h);
-  padding: 0 3.75rem 0 1rem;
+  /* Equal sides so the line truly centres (room for Order pizza) */
+  padding: 0 4.5rem;
   overflow: hidden;
   text-decoration: none;
   color: rgba(243, 238, 230, 0.78);
   border-bottom: 1px solid rgba(243, 238, 230, 0.12);
   background: rgba(15, 58, 49, 0.35);
+  text-align: center;
 }
 
 .site-header.is-scrolled .events-cue {
@@ -291,7 +293,7 @@ input {
   color: inherit;
 }
 
-/* Order pizza — quiet until scrolled; Book owns the landing */
+/* Order pizza — quiet, always available from the landing */
 .order-fab {
   position: fixed;
   top: calc(var(--ticker-h) + max(0.4rem, env(safe-area-inset-top, 0px)));
@@ -309,23 +311,13 @@ input {
   text-decoration: none;
   text-align: center;
   box-shadow: 0 4px 14px rgba(15, 58, 49, 0.16);
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.88);
   transition:
-    opacity 0.28s var(--ease),
-    transform 0.28s var(--ease),
+    transform 0.25s var(--ease),
     box-shadow 0.25s var(--ease),
     background 0.2s var(--ease);
 }
 
-.order-fab.is-visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: none;
-}
-
-.order-fab.is-visible:hover {
+.order-fab:hover {
   transform: scale(1.04);
   background: var(--order-pop-hot);
   box-shadow: 0 8px 20px rgba(15, 58, 49, 0.22);
@@ -531,10 +523,17 @@ input {
 .hero--photo .hero__content {
   grid-row: 1;
   align-self: start;
+  justify-self: center;
+  width: 100%;
   max-width: 28rem;
   padding-bottom: 0.85rem;
   padding-right: 0;
   transform: none;
+  text-align: center;
+}
+
+.hero--photo .hero__actions {
+  justify-content: center;
 }
 
 /* Desktop: copy left, façade right on the hero floor */
@@ -587,9 +586,15 @@ input {
     grid-column: 1;
     grid-row: 1;
     align-self: center;
+    justify-self: start;
     max-width: 26rem;
     padding-bottom: clamp(2.5rem, 7vw, 4.5rem);
     transform: none;
+    text-align: left;
+  }
+
+  .hero--photo .hero__actions {
+    justify-content: flex-start;
   }
 }
 
@@ -1164,7 +1169,7 @@ input {
   }
 
   .events-cue {
-    padding: 0 4.5rem 0 1.5rem;
+    padding: 0 4.5rem;
   }
 
   .events-cue__line {
