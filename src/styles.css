@@ -467,7 +467,8 @@ input {
   grid-template-rows: auto minmax(0, 1fr);
   align-items: stretch;
   padding-bottom: 0;
-  padding-top: calc(var(--ticker-h) + 1.1rem);
+  /* Breathe under the events cue so the name isn’t hard against the top */
+  padding-top: calc(var(--ticker-h) + clamp(2.5rem, 7vh, 3.75rem));
 }
 
 .hero--photo .hero__media {
@@ -480,7 +481,7 @@ input {
   justify-content: center;
   align-items: flex-end;
   overflow: hidden;
-  min-height: 48svh;
+  min-height: 44svh;
 }
 
 .hero__facade {
@@ -526,7 +527,7 @@ input {
   justify-self: center;
   width: 100%;
   max-width: 28rem;
-  padding-bottom: 0.85rem;
+  padding-bottom: 1.15rem;
   padding-right: 0;
   transform: none;
   text-align: center;
@@ -634,22 +635,18 @@ input {
   animation: hero-rise 0.9s var(--ease) both;
 }
 
-.hero__place.hero__reveal {
-  animation-delay: 0.12s;
-}
-
 .hero__name.hero__reveal {
   animation-name: hero-name-reveal;
   animation-duration: 1.15s;
-  animation-delay: 0.28s;
+  animation-delay: 0.2s;
 }
 
 .hero__tagline.hero__reveal {
-  animation-delay: 0.55s;
+  animation-delay: 0.45s;
 }
 
 .hero__actions.hero__reveal {
-  animation-delay: 0.7s;
+  animation-delay: 0.6s;
 }
 
 .btn {
