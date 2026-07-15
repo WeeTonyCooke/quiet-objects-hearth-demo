@@ -329,24 +329,28 @@ input {
 
 .hero--photo {
   background: var(--rosato-green);
+  /* Sit the façade on the ground plane */
+  padding-bottom: 0;
 }
 
+/* Mobile / default: illustration as ground-anchored companion under the copy */
 .hero--photo .hero__media {
   position: absolute;
   inset: 0;
   z-index: 0;
   background: var(--rosato-green);
   display: flex;
-  justify-content: flex-end;
-  align-items: stretch;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .hero--photo .hero__media img {
   width: auto;
-  max-width: min(62%, 40rem);
-  height: 100%;
+  max-width: min(92%, 36rem);
+  height: auto;
+  max-height: min(56svh, 30rem);
   object-fit: contain;
-  object-position: right center;
+  object-position: center bottom;
   animation: hero-fade 1.4s var(--ease) both;
 }
 
@@ -354,40 +358,61 @@ input {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  /* Soft left hold for type — green does the work, no heavy wash over the façade */
   background: linear-gradient(
-    90deg,
-    rgba(13, 51, 40, 0.55) 0%,
-    rgba(13, 51, 40, 0.2) 38%,
-    transparent 58%
+    180deg,
+    transparent 0%,
+    transparent 36%,
+    rgba(13, 51, 40, 0.88) 70%,
+    rgba(13, 51, 40, 0.96) 100%
   );
 }
 
-@media (max-width: 800px) {
+.hero--photo .hero__content {
+  align-self: end;
+  padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+/* Desktop: bigger façade, closer to copy, base on the hero floor */
+@media (min-width: 901px) {
+  .hero--photo {
+    display: grid;
+    grid-template-columns: minmax(16rem, 0.78fr) minmax(24rem, 1.45fr);
+    column-gap: clamp(0, 1vw, 0.75rem);
+    align-items: end;
+    padding-right: clamp(0.25rem, 1.5vw, 1rem);
+  }
+
   .hero--photo .hero__media {
-    align-items: flex-start;
-    padding-top: var(--header-h);
+    position: relative;
+    inset: auto;
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background: transparent;
+    min-height: calc(100svh - var(--header-h));
+    height: 100%;
   }
 
   .hero--photo .hero__media img {
-    max-width: 92%;
-    height: min(52svh, 24rem);
-    margin: 0 auto;
-    object-position: center top;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    max-height: calc(100svh - var(--header-h));
+    object-fit: contain;
+    object-position: left bottom;
   }
 
   .hero--photo .hero__veil {
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      transparent 42%,
-      rgba(13, 51, 40, 0.88) 72%,
-      rgba(13, 51, 40, 0.96) 100%
-    );
+    display: none;
   }
 
   .hero--photo .hero__content {
-    align-self: end;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    max-width: 26rem;
+    padding-bottom: clamp(2.5rem, 7vw, 4.5rem);
   }
 }
 
