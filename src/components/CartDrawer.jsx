@@ -125,12 +125,6 @@ export function CartDrawer({ venue }) {
         </button>
       ) : null}
 
-      {count === 0 && !open ? (
-        <a className="sticky-order" href="#order">
-          Order pizza
-        </a>
-      ) : null}
-
       <div
         className={`cart-drawer${open ? ' is-open' : ''}`}
         role="dialog"

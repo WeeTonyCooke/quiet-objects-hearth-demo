@@ -41,6 +41,12 @@ export function Header({ venue }) {
           <span className="tonight-cue__line">{tonight.short}</span>
         </a>
 
+        {canOrder ? (
+          <a className="order-badge" href="#order" onClick={close}>
+            Order pizza
+          </a>
+        ) : null}
+
         <button
           className="site-header__toggle"
           type="button"
@@ -67,20 +73,9 @@ export function Header({ venue }) {
           </div>
 
           <div className="site-nav__actions">
-            {canOrder ? (
-              <>
-                <a className="site-nav__ghost" href={venue.bookingUrl} onClick={close}>
-                  Book a table
-                </a>
-                <a className="site-nav__primary" href="#order" onClick={close}>
-                  Order pizza
-                </a>
-              </>
-            ) : (
-              <a className="site-nav__primary" href={venue.bookingUrl} onClick={close}>
-                Book a table
-              </a>
-            )}
+            <a className="site-nav__primary" href={venue.bookingUrl} onClick={close}>
+              Book a table
+            </a>
           </div>
         </nav>
       </div>

@@ -151,7 +151,7 @@ input {
 
 .site-header__inner {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
   gap: var(--space-2);
   max-width: var(--max);
@@ -161,12 +161,54 @@ input {
 }
 
 .site-header__brand {
+  grid-column: 1;
+  grid-row: 1;
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-decoration: none;
   color: inherit;
+}
+
+/* Compact utility — pizza as chrome, not a hero shout */
+.order-badge {
+  grid-column: 3;
+  grid-row: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  min-height: 2.15rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(246, 243, 236, 0.55);
+  border-radius: var(--radius);
+  background: rgba(246, 243, 236, 0.12);
+  color: var(--hero-ink);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.order-badge:hover {
+  background: var(--bg);
+  border-color: var(--bg);
+  color: var(--accent-deep);
+}
+
+.site-header.is-scrolled .order-badge {
+  border-color: var(--accent-deep);
+  background: transparent;
+  color: var(--accent-deep);
+}
+
+.site-header.is-scrolled .order-badge:hover {
+  background: var(--accent-deep);
+  color: var(--on-accent);
 }
 
 .tonight-cue {
@@ -227,7 +269,7 @@ input {
   background: transparent;
   cursor: pointer;
   justify-self: end;
-  grid-column: 3;
+  grid-column: 4;
   grid-row: 1;
 }
 
@@ -448,6 +490,37 @@ input {
   color: rgba(246, 243, 236, 0.86);
 }
 
+.hero__tonight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: var(--space-3);
+  max-width: 26rem;
+  padding: 0.65rem 0 0;
+  border-top: 1px solid rgba(246, 243, 236, 0.28);
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero__tonight:hover .hero__tonight-line {
+  color: var(--bg);
+}
+
+.hero__tonight-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(246, 243, 236, 0.7);
+}
+
+.hero__tonight-line {
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: rgba(246, 243, 236, 0.92);
+  transition: color 0.2s var(--ease);
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -474,8 +547,12 @@ input {
   animation-delay: 0.55s;
 }
 
+.hero__tonight.hero__reveal {
+  animation-delay: 0.68s;
+}
+
 .hero__actions.hero__reveal {
-  animation-delay: 0.72s;
+  animation-delay: 0.82s;
 }
 
 .btn {
@@ -973,12 +1050,22 @@ input {
 }
 
 @media (min-width: 720px) {
+  .site-header__inner {
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+  }
+
   .site-header__toggle {
     display: none;
   }
 
   .tonight-cue {
     display: flex;
+  }
+
+  .order-badge {
+    grid-column: 4;
+    grid-row: 1;
+    order: 4;
   }
 
   .site-nav {
@@ -1023,7 +1110,7 @@ input {
     font-size: 0.92rem;
   }
 
-  /* On green hero: cream primary, outline ghost — Coach pattern */
+  /* On green hero: cream Book — pizza stays a quiet badge */
   .site-header:not(.is-scrolled) .site-nav__primary {
     border-color: var(--bg);
     background: var(--bg);
@@ -1201,10 +1288,9 @@ input {
     background 0.25s var(--ease);
 }
 
-html:has(.site-header.is-scrolled) .sticky-order {
-  opacity: 1;
-  pointer-events: auto;
-  transform: none;
+/* Header badge owns Order pizza — no competing sticky shout */
+.sticky-order {
+  display: none !important;
 }
 
 .cart-drawer {
