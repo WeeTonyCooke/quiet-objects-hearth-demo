@@ -591,8 +591,16 @@ input {
   margin: var(--space-3) 0 0;
   max-width: 24rem;
   font-size: 1.2rem;
-  line-height: 1.65;
+  line-height: 1.45;
   color: rgba(243, 238, 230, 0.86);
+}
+
+.hero__tagline-support {
+  margin: 0.35rem 0 0;
+  max-width: 22rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: rgba(243, 238, 230, 0.72);
 }
 
 .hero__actions {
@@ -621,8 +629,12 @@ input {
   animation-delay: 0.55s;
 }
 
+.hero__tagline-support.hero__reveal {
+  animation-delay: 0.68s;
+}
+
 .hero__actions.hero__reveal {
-  animation-delay: 0.7s;
+  animation-delay: 0.82s;
 }
 
 .btn {

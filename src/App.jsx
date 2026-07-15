@@ -22,7 +22,7 @@ function buildLocalBusinessSchema(v) {
     '@context': 'https://schema.org',
     '@type': 'BarOrPub',
     name: v.name,
-    description: v.taglineShort,
+    description: [v.tagline, v.taglineSupport].filter(Boolean).join(' '),
     telephone: v.phone,
     email: v.email,
     address: {

@@ -25,7 +25,10 @@ export function Hero({ venue }) {
       <div className="hero__content">
         <p className="hero__place hero__reveal">{venue.place}</p>
         <h1 className="hero__name hero__reveal">{venue.name}</h1>
-        <p className="hero__tagline hero__reveal">{venue.taglineShort}</p>
+        <p className="hero__tagline hero__reveal">{venue.tagline}</p>
+        {venue.taglineSupport ? (
+          <p className="hero__tagline-support hero__reveal">{venue.taglineSupport}</p>
+        ) : null}
         <div className="hero__actions hero__reveal">
           <a className="btn btn--on-hero" href={venue.bookingUrl}>
             Book a table
