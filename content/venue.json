@@ -12,8 +12,10 @@
   },
   "phone": "+353 74 938 5847",
   "email": "rosatosmoville@gmail.com",
-  "bookingUrl": "https://rosatos.ie/book-now/",
+  "bookingUrl": "#visit",
+  "bookingWidgetUrl": "https://booking.resdiary.com/widget/ThreeMonth/Rosatos/25888",
   "bookingNote": "Bookings are for indoor dining only. Outdoor seating is walk-in.",
+  "bookingEnquiry": "For all Reservations or Events Enquiries please call or email us at",
   "mapEmbedUrl": "https://www.google.com/maps?q=Rosatos+Bar+%26+Restaurant,+7+Malin+Road,+Moville&output=embed",
   "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=7+Malin+Road,+Moville,+Co.+Donegal",
   "hours": [
