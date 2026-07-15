@@ -11,6 +11,24 @@ function toggleOption(list, option) {
   return [...list, option]
 }
 
+/** Match leave-offs to what this pizza actually carries. */
+const REMOVAL_ALIASES = {
+  onion: ['onion', 'onions'],
+  mushroom: ['mushroom', 'mushrooms'],
+  peppers: ['pepper', 'peppers'],
+  jalapenos: ['jalapeño', 'jalapeños', 'jalapeno', 'jalapenos'],
+  rocket: ['rocket'],
+  chilli: ['chilli', 'chili', 'chilli flakes'],
+}
+
+function removersForPizza(pizza, removals) {
+  const haystack = `${pizza.name} ${pizza.description || ''}`.toLowerCase()
+  return removals.filter((option) => {
+    const aliases = REMOVAL_ALIASES[option.id] || [option.label.toLowerCase()]
+    return aliases.some((alias) => haystack.includes(alias.toLowerCase()))
+  })
+}
+
 export function OrderPizza() {
   const { enabled, ordering, customizations, extraPrice, pizzas, addItem, formatEuro } = useCart()
   const [activeName, setActiveName] = useState(null)
@@ -23,6 +41,11 @@ export function OrderPizza() {
   const activePizza = useMemo(
     () => pizzas.find((pizza) => pizza.name === activeName) || null,
     [pizzas, activeName],
+  )
+
+  const leaveOffs = useMemo(
+    () => (activePizza ? removersForPizza(activePizza, removals) : []),
+    [activePizza, removals],
   )
 
   const draftPrice = useMemo(() => {
@@ -54,7 +77,6 @@ export function OrderPizza() {
         <p className="eyebrow">{ordering.eyebrow}</p>
         <h2 className="section__title">{ordering.title}</h2>
         <p className="section__body">{ordering.intro}</p>
-        <p className="order__badge">Collection only · No delivery</p>
       </div>
 
       <ul className="order__list">
@@ -77,39 +99,41 @@ export function OrderPizza() {
                   aria-expanded={isOpen}
                   onClick={() => (isOpen ? closeCustomize() : openCustomize(pizza))}
                 >
-                  {isOpen ? 'Close' : 'Add'}
+                  {isOpen ? 'Close' : 'Customize'}
                 </button>
               ) : (
                 <button type="button" className="btn btn--primary order__add" onClick={() => addItem(pizza)}>
-                  Add
+                  Add pizza
                 </button>
               )}
 
               {isOpen && canCustomize ? (
                 <div className="order__customize">
-                  <fieldset className="order__fieldset">
-                    <legend>Leave off</legend>
-                    <div className="order__options">
-                      {removals.map((option) => {
-                        const checked = draft.removals.some((row) => row.id === option.id)
-                        return (
-                          <label key={option.id} className="order__option">
-                            <input
-                              type="checkbox"
-                              checked={checked}
-                              onChange={() =>
-                                setDraft((current) => ({
-                                  ...current,
-                                  removals: toggleOption(current.removals, option),
-                                }))
-                              }
-                            />
-                            <span>{option.label}</span>
-                          </label>
-                        )
-                      })}
-                    </div>
-                  </fieldset>
+                  {leaveOffs.length > 0 ? (
+                    <fieldset className="order__fieldset">
+                      <legend>Leave off</legend>
+                      <div className="order__options">
+                        {leaveOffs.map((option) => {
+                          const checked = draft.removals.some((row) => row.id === option.id)
+                          return (
+                            <label key={option.id} className="order__option">
+                              <input
+                                type="checkbox"
+                                checked={checked}
+                                onChange={() =>
+                                  setDraft((current) => ({
+                                    ...current,
+                                    removals: toggleOption(current.removals, option),
+                                  }))
+                                }
+                              />
+                              <span>{option.label}</span>
+                            </label>
+                          )
+                        })}
+                      </div>
+                    </fieldset>
+                  ) : null}
 
                   <fieldset className="order__fieldset">
                     <legend>Extra · +{formatEuro(extraPrice)} each</legend>
@@ -151,7 +175,7 @@ export function OrderPizza() {
                       <strong>{formatEuro(draftPrice)}</strong>
                     </p>
                     <button type="button" className="btn btn--primary" onClick={confirmAdd}>
-                      Add to order
+                      Add pizza
                     </button>
                   </div>
                 </div>
