@@ -10,6 +10,7 @@ export function Hero({ venue }) {
       {hasPhoto ? (
         <div className="hero__media" aria-hidden="true">
           <div className="hero__facade">
+            <span className="hero__spotlight" />
             <img
               src={venue.hero.image}
               alt=""
@@ -20,6 +21,8 @@ export function Hero({ venue }) {
             <span className="hero__window-glow" />
             <span className="hero__smoke hero__smoke--a" />
             <span className="hero__smoke hero__smoke--b" />
+            <span className="hero__contact-shadow" />
+            <span className="hero__pavement" />
             <span className="hero__ground-glow" />
           </div>
           <div className="hero__veil" />
