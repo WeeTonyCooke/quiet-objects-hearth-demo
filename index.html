@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rosato’s Bar & Restaurant, Moville — open fires, great grub, stone-baked pizza, and a proper welcome on Malin Road."
+    />
+    <title>Rosato’s · Moville</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header" id="site-header">
+      <a class="brand" href="#top">
+        <img src="./images/mark-r.png" alt="" width="40" height="40" />
+        <span>Rosato’s</span>
+      </a>
+      <a class="tonight-cue" id="tonight-cue" href="#tonight">
+        <span class="tonight-cue__label" data-tonight-label>Tonight</span>
+        <span class="tonight-cue__line" data-tonight-line>See what’s on</span>
+      </a>
+      <nav class="site-nav" id="site-nav">
+        <a href="#tonight">Tonight</a>
+        <a href="#menus">Menus</a>
+        <a href="#music">Music</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a
+        class="btn btn--gold"
+        href="https://rosatos.ie/book-now/"
+        target="_blank"
+        rel="noreferrer"
+        >Book a table</a
+      >
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Menu</span>
+        <span></span><span></span>
+      </button>
+    </header>
+
+    <main id="main">
+      <section id="top" class="hero">
+        <div class="hero__panel">
+          <p class="hero__place">7 Malin Road · Moville</p>
+          <h1>Rosato’s</h1>
+          <p class="hero__line">
+            Cosy bar &amp; restaurant with open fires, great grub, and stone-baked pizza.
+          </p>
+          <div class="hero__actions">
+            <a
+              class="btn btn--gold"
+              href="https://rosatos.ie/book-now/"
+              target="_blank"
+              rel="noreferrer"
+              >Book a table</a
+            >
+            <a class="hero__menu-link" href="#menus">Food menu</a>
+          </div>
+        </div>
+        <figure class="hero__media">
+          <img
+            class="hero__img"
+            src="./images/hero-rosatos.png"
+            alt="Illustration of Rosato’s red façade on Malin Road, Moville"
+            width="1536"
+            height="1024"
+            fetchpriority="high"
+          />
+        </figure>
+      </section>
+
+      <section class="board" id="tonight" aria-label="What’s on">
+        <p class="board__kicker" id="board-kicker">
+          <strong data-tonight-label>Tonight</strong>
+          <span data-tonight-detail>Poker Wed · Quiz Fri · Live music Sat</span>
+        </p>
+        <div class="board__grid" data-board-grid></div>
+      </section>
+
+      <section class="section room" id="room">
+        <div class="room__copy">
+          <p class="eyebrow">The room</p>
+          <h2>Open fires, proper food, and a hundred thousand welcomes.</h2>
+          <p>
+            A neighbourhood bar and restaurant on Malin Road — stone floors, old wood, and a room
+            that doesn’t hurry you. Come for pizza and a pint; stay when the fire’s in.
+          </p>
+        </div>
+        <figure class="room__media">
+          <img
+            src="./images/fire.jpg"
+            alt="Open fire burning in the hearth at Rosato’s"
+            width="1070"
+            height="924"
+            loading="lazy"
+          />
+        </figure>
+      </section>
+
+      <section class="section pint" id="pint">
+        <div class="pint__copy">
+          <p class="eyebrow">The pint</p>
+          <h2>A proper pint, by the fire.</h2>
+          <p>Guinness on draft, soft drinks, and whatever’s pouring at the bar.</p>
+          <p class="pint__aside">
+            <a href="#menus">See the menu</a>
+          </p>
+        </div>
+        <div class="pint__montage" aria-label="Rosato’s — pints, plates, and the room">
+          <figure>
+            <img
+              src="./images/grid-pint.jpg"
+              alt="A pint of Guinness and a cocktail at Rosato’s"
+              width="900"
+              height="900"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="./images/exterior.jpg"
+              alt="Rosato’s red exterior on Malin Road"
+              width="900"
+              height="900"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="./images/bar.jpg"
+              alt="The bar at Rosato’s"
+              width="900"
+              height="900"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="./images/food.jpg"
+              alt="A plate from the kitchen at Rosato’s"
+              width="900"
+              height="900"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section menus menus--light" id="favourites" aria-label="Favourites">
+        <div data-light-menu></div>
+      </section>
+
+      <section class="section menus" id="menus">
+        <div class="menus__intro">
+          <p class="eyebrow">Full menu</p>
+          <h2>Starters, mains, pizza, kids &amp; desserts.</h2>
+          <p class="lede">
+            Homemade plates, 100% Inishowen beef, and 12&quot; stone-baked pizzas. Takeaway available —
+            ask at the bar.
+          </p>
+        </div>
+
+        <div class="menu-services" role="tablist" aria-label="Menu">
+          <button type="button" class="is-active" data-menu="start" role="tab" aria-selected="true">
+            To start
+          </button>
+          <button type="button" data-menu="mains" role="tab" aria-selected="false">Mains</button>
+          <button type="button" data-menu="pizza" role="tab" aria-selected="false">Pizza</button>
+          <button type="button" data-menu="kids" role="tab" aria-selected="false">Kids</button>
+          <button type="button" data-menu="desserts" role="tab" aria-selected="false">Desserts</button>
+        </div>
+
+        <div class="menu-panel is-active" id="menu-start" data-panel="start" role="tabpanel">
+          <p class="menu-meta">To share · or for yourself</p>
+          <div class="menu-columns">
+            <div class="menu-block">
+              <h3>To start</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="menu-item"><strong>Breaded Mushrooms</strong><span class="price">7.50</span></div>
+                  <span>Lightly breaded, served with garlic mayo</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Bruschetta</strong><span class="price">7.50</span></div>
+                  <span>Toasted garlic Vienna bread, tomato &amp; chilli jam, basil &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Vegetable Soup</strong><span class="price">6.95</span></div>
+                  <span>Homemade, served with a crusty roll · GF on request</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Seafood Chowder</strong><span class="price">9.50</span></div>
+                  <span>Haddock, salmon &amp; smoked fish, with wheaten bread</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>BBQ Ribs</strong><span class="price">10.95</span></div>
+                  <span>Half rack BBQ-marinated ribs with honey dipping sauce</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Vegetarian Nachos</strong><span class="price">5.95</span></div>
+                  <span>Tomato &amp; oregano sauce, jalapeños &amp; cheese</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Nachos</strong><span class="price">10.95</span></div>
+                  <span>Beef Bolognese, jalapeños, cheese, nachos on the side</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Cheesy Pizza Garlic Bread</strong><span class="price">8.50 / 13.50</span></div>
+                  <span>9&quot; or 12&quot;</span>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-block">
+              <h3>Side orders</h3>
+              <p class="menu-block__note">All sides €4.50</p>
+              <ul class="menu-list">
+                <li><div class="menu-item"><strong>Chips</strong></div></li>
+                <li><div class="menu-item"><strong>Garlic fries</strong></div></li>
+                <li><div class="menu-item"><strong>Parmesan garlic fries</strong></div></li>
+                <li><div class="menu-item"><strong>Spicy wedges</strong></div></li>
+                <li><div class="menu-item"><strong>Champ / creamed potato</strong></div></li>
+                <li><div class="menu-item"><strong>French fried onions</strong></div></li>
+                <li><div class="menu-item"><strong>Rocket &amp; parmesan salad</strong></div></li>
+                <li><div class="menu-item"><strong>Sauté mushrooms</strong></div></li>
+              </ul>
+              <p class="menu-note">All mains excluding pasta / rice / pizza come with a choice of one side.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="menu-mains" data-panel="mains" role="tabpanel" hidden>
+          <p class="menu-meta">100% Inishowen beef · seafood from nearby Greencastle</p>
+          <div class="menu-columns">
+            <div class="menu-block">
+              <h3>Chicken</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="menu-item"><strong>Chicken Goujons</strong><span class="price">17.50</span></div>
+                  <span>Homemade breaded goujons with a choice of dip</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Chicken Escalope</strong><span class="price">17.50</span></div>
+                  <span>Pan-fried, choice of sauces · GF</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Chicken Italiano</strong><span class="price">18.90</span></div>
+                  <span>Escalope with pesto, sun-dried tomatoes, goat’s cheese &amp; mozzarella · GF</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Chilli Chicken Pocket</strong><span class="price">16.50</span></div>
+                  <span>Spicy chilli chicken in pitta with salad, hot chilli sauce &amp; sour cream</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Thai Green Chicken Curry</strong><span class="price">19.50</span></div>
+                  <span>Strips of chicken breast in a spicy curry sauce with rice &amp; naan</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Chicken Burger</strong><span class="price">17.50</span></div>
+                  <span>Brioche, applewood cheddar, rocket, French fried onion &amp; taco sauce</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Chicken Carbonara</strong><span class="price">16.95</span></div>
+                  <span>Chicken, bacon &amp; mushrooms in a creamy sauce with garlic bread</span>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-block">
+              <h3>Beef</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="menu-item"><strong>Pasta Bolognese</strong><span class="price">16.50</span></div>
+                  <span>Homemade, with garlic bread</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Beef Lasagne</strong><span class="price">16.95</span></div>
+                  <span>Generous layers of Bolognese, pasta &amp; cheese sauce</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Rosato’s Hot Pot</strong><span class="price">16.95</span></div>
+                  <span>Braised beef &amp; vegetables topped with sliced potato · GF</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Steak Burger</strong><span class="price">16.95</span></div>
+                  <span>Inishowen beef, applewood cheddar, Ballymaloe relish, rocket &amp; French fried onion</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>10oz Sirloin Steak</strong><span class="price">31.95</span></div>
+                  <span>Inishowen dry-aged beef (28–35 day), sauté onions &amp; choice of sauce</span>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-block">
+              <h3>Fish</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="menu-item"><strong>Battered Haddock</strong><span class="price">17.95</span></div>
+                  <span>Light homemade batter, mushy peas &amp; tartare</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Goujons of Hake</strong><span class="price">18.95</span></div>
+                  <span>Locally caught, lightly battered, with tartare</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Cajun Salmon</strong><span class="price">22.50</span></div>
+                  <span>On noodles with charred asparagus &amp; honey-lime dressing</span>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-block">
+              <h3>Vegetarian / vegan</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="menu-item"><strong>Vegan Pasta</strong><span class="price">16.50</span></div>
+                  <span>Mediterranean roasted vegetables in tomato &amp; basil sauce with penne</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Vegetarian Pitta Pocket</strong><span class="price">16.50</span></div>
+                  <span>Salt &amp; chilli vegetables, salad, hot chilli sauce &amp; sour cream</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Vegetable Thai Green Curry</strong><span class="price">16.90</span></div>
+                  <span>Chunky vegetables in a spicy curry sauce with rice &amp; naan</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="menu-pizza" data-panel="pizza" role="tabpanel" hidden>
+          <p class="menu-meta">12&quot; stone-baked pizzas</p>
+          <div class="menu-columns">
+            <div class="menu-block menu-block--highlight">
+              <h3>From the oven</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="menu-item"><strong>Margherita</strong><span class="price">13.50</span></div>
+                  <span>Tomato sauce &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Pepperoni</strong><span class="price">14.50</span></div>
+                  <span>Pepperoni &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Hot Chorizo</strong><span class="price">15.50</span></div>
+                  <span>Chorizo, jalapeños &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>BBQ Chicken</strong><span class="price">14.95</span></div>
+                  <span>BBQ sauce, chicken &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Pollo</strong><span class="price">14.95</span></div>
+                  <span>Chicken, ham &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Hawaiian</strong><span class="price">14.95</span></div>
+                  <span>Ham, pineapple &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Taco Chicken</strong><span class="price">15.95</span></div>
+                  <span>Cajun chicken, red onion, tomato, basil, rocket, taco sauce &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Hot ’n’ Spicy Chicken</strong><span class="price">15.50</span></div>
+                  <span>Chicken, onions, chilli flakes, jalapeños &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Hot ’n’ Spicy Pepperoni</strong><span class="price">15.50</span></div>
+                  <span>Pepperoni, onions, chilli flakes, jalapeños &amp; mozzarella</span>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-block">
+              <h3>More pizzas</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="menu-item"><strong>Seafood</strong><span class="price">16.50</span></div>
+                  <span>Cod, salmon, smoked haddock &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Italiano</strong><span class="price">15.95</span></div>
+                  <span>Chicken, pesto, sun-dried tomatoes, goat’s cheese &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Veggie</strong><span class="price">15.50</span></div>
+                  <span>Onions, mushroom, peppers, sun-dried tomatoes &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Vegan</strong><span class="price">14.95</span></div>
+                  <span>Olives, peppers, onions, sun-dried tomato &amp; rocket</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Four Cheese</strong><span class="price">15.50</span></div>
+                  <span>Goat’s, Stilton, smoked applewood cheddar &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Meat Feast</strong><span class="price">16.50</span></div>
+                  <span>Pepperoni, salami, chorizo, sausage &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Rosato’s Calzone Burst</strong><span class="price">16.95</span></div>
+                  <span>Folded pizza filled with beef Bolognese &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Big Irish</strong><span class="price">15.50</span></div>
+                  <span>Bacon, egg, sausage, tomato &amp; mozzarella</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Chilli Chicken</strong><span class="price">15.50</span></div>
+                  <span>Marinated chilli chicken, rocket, sour cream &amp; mozzarella</span>
+                </li>
+              </ul>
+              <p class="menu-note">Extra veg toppings €1.50 · extra meat toppings €2.00</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="menu-kids" data-panel="kids" role="tabpanel" hidden>
+          <p class="menu-meta">For under 12s</p>
+          <div class="menu-columns">
+            <div class="menu-block">
+              <h3>Pizza &amp; pasta</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="menu-item"><strong>9&quot; Margherita</strong><span class="price">8.50</span></div>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>9&quot; Pizza (2 toppings)</strong><span class="price">9.50</span></div>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Pasta Bolognese</strong><span class="price">8.50</span></div>
+                  <span>With garlic bread</span>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-block">
+              <h3>Mains</h3>
+              <p class="menu-block__note">
+                Served with chips, garlic fries, creamed potato, pasta or rice
+              </p>
+              <ul class="menu-list">
+                <li><div class="menu-item"><strong>Chicken Nuggets</strong><span class="price">7.95</span></div></li>
+                <li><div class="menu-item"><strong>100% Beef Burger</strong><span class="price">7.95</span></div></li>
+                <li><div class="menu-item"><strong>Sausages</strong><span class="price">7.95</span></div></li>
+                <li><div class="menu-item"><strong>Homemade Chicken Goujons</strong><span class="price">7.95</span></div></li>
+                <li><div class="menu-item"><strong>Beef Lasagne</strong><span class="price">8.95</span></div></li>
+                <li><div class="menu-item"><strong>Beef Hot Pot</strong><span class="price">8.50</span></div></li>
+                <li><div class="menu-item"><strong>Battered Haddock</strong><span class="price">9.50</span></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-panel" id="menu-desserts" data-panel="desserts" role="tabpanel" hidden>
+          <p class="menu-meta">Save room</p>
+          <div class="menu-columns">
+            <div class="menu-block">
+              <h3>Rosato’s desserts</h3>
+              <ul class="menu-list">
+                <li>
+                  <div class="menu-item"><strong>Belgian waffle</strong><span class="price">7.50</span></div>
+                  <span>With caramel sauce &amp; ice cream</span>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Chocolate brownie</strong><span class="price">7.50</span></div>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Chocolate fudge cake</strong><span class="price">7.50</span></div>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Sticky toffee pudding</strong><span class="price">7.50</span></div>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Cheesecake of the day</strong><span class="price">7.50</span></div>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Crème brûlée</strong><span class="price">7.50</span></div>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Apple pie</strong><span class="price">7.50</span></div>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Selection of ice cream</strong><span class="price">4.95</span></div>
+                </li>
+                <li>
+                  <div class="menu-item"><strong>Kids ice cream / cones</strong><span class="price">2.95</span></div>
+                </li>
+              </ul>
+              <p class="menu-note">Ask for today’s sauces and dips at the bar.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section music" id="music">
+        <div class="music__head">
+          <div>
+            <p class="eyebrow" data-programme-eyebrow>What’s on</p>
+            <h2 data-programme-title>The week, as we keep it.</h2>
+            <p class="lede">Poker midweek, quiz on Friday, and live music when Saturday lands.</p>
+          </div>
+        </div>
+
+        <figure class="music__hero">
+          <img
+            src="./images/atmosphere.jpg"
+            alt="Warm interior evening at Rosato’s"
+            width="1707"
+            height="2560"
+            loading="lazy"
+          />
+        </figure>
+
+        <ol class="lineup" data-lineup></ol>
+        <p class="music__note" data-programme-note>
+          Line-ups can shift —
+          <a href="https://www.instagram.com/rosatosmoville/" target="_blank" rel="noreferrer"
+            >check Instagram</a
+          >
+          · Enquiries
+          <a href="mailto:rosatosmoville@gmail.com">rosatosmoville@gmail.com</a>
+        </p>
+      </section>
+
+      <section class="section events" id="whats-on">
+        <p class="eyebrow">This week</p>
+        <h2>What’s on at Rosato’s.</h2>
+        <div class="events__grid">
+          <article>
+            <h3>Texas Hold’em · Wednesdays</h3>
+            <p>Poker from 21:30. Come early for a plate — the kitchen runs until 21:00.</p>
+          </article>
+          <article>
+            <h3>QuizKings · Fridays</h3>
+            <p>Fun quiz from 22:00. Bring a team, or turn up and make one.</p>
+          </article>
+          <article>
+            <h3>Live music · Saturdays</h3>
+            <p>Live music from 22:00. Check Instagram for who’s on.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section visit" id="visit">
+        <div class="visit__layout">
+          <div>
+            <p class="eyebrow">Visit</p>
+            <h2>Find us on Malin Road.</h2>
+            <p class="lede">
+              7 Malin Road, Moville, Co. Donegal — indoor bookings online; outdoor seating is
+              walk-in.
+            </p>
+            <dl class="visit__facts">
+              <div>
+                <dt>Hours</dt>
+                <dd>
+                  Mon–Fri 16:00–21:00<br />
+                  Sat 15:00–21:00<br />
+                  Sun 12:30–21:00
+                </dd>
+              </div>
+              <div>
+                <dt>Address</dt>
+                <dd>
+                  7 Malin Road<br />
+                  Moville, Co. Donegal<br />
+                  F93 D519
+                </dd>
+              </div>
+              <div>
+                <dt>Contact</dt>
+                <dd>
+                  <a href="tel:+353749385847">074 938 5847</a><br />
+                  <a href="mailto:rosatosmoville@gmail.com">rosatosmoville@gmail.com</a>
+                </dd>
+              </div>
+            </dl>
+            <div class="visit__actions">
+              <a
+                class="btn btn--gold"
+                href="https://rosatos.ie/book-now/"
+                target="_blank"
+                rel="noreferrer"
+                >Book a table</a
+              >
+              <a
+                class="btn btn--ghost"
+                href="https://www.google.com/maps/dir/?api=1&destination=7+Malin+Road,+Moville,+Co.+Donegal"
+                target="_blank"
+                rel="noreferrer"
+                >Get directions</a
+              >
+              <a
+                class="btn btn--ghost"
+                data-gift-card="label"
+                href="https://rosatos.ie/product/gift-card/"
+                target="_blank"
+                rel="noreferrer"
+                >Gift cards</a
+              >
+            </div>
+          </div>
+          <aside class="visit__award" aria-label="Welcome">
+            <p class="visit__award-line">
+              <span class="visit__award-rule" aria-hidden="true"></span>
+              <span class="visit__award-kicker">Céad míle fáilte</span>
+              <span class="visit__award-rule" aria-hidden="true"></span>
+            </p>
+            <p class="visit__award-title">A hundred thousand welcomes</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer__brand">
+        <img src="./images/logo.png" alt="Rosato’s" width="120" height="20" />
+        <div>
+          <p class="footer__name">Rosato’s</p>
+          <p>Bar &amp; restaurant · Moville, Co. Donegal</p>
+        </div>
+      </div>
+      <div class="footer__links">
+        <a href="https://www.instagram.com/rosatosmoville/" target="_blank" rel="noreferrer"
+          >Instagram</a
+        >
+        <a href="https://www.facebook.com/rosatos.bar/" target="_blank" rel="noreferrer">Facebook</a>
+        <a
+          data-gift-card="label"
+          href="https://rosatos.ie/product/gift-card/"
+          target="_blank"
+          rel="noreferrer"
+          >Gift cards</a
+        >
+        <a href="https://rosatos.ie/" target="_blank" rel="noreferrer">Current site</a>
+      </div>
+      <p class="footer__credit">
+        <a href="https://quietobjects.ie" target="_blank" rel="noreferrer">A Quiet Objects demo</a>
+        · Menu &amp; details from rosatos.ie · Not the live site
+      </p>
+    </footer>
+
+    <script type="module" src="./js/content.js"></script>
+  </body>
+</html>

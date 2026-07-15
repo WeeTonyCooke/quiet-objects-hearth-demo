@@ -1,0 +1,67 @@
+{
+  "name": "Rosato's",
+  "tagline": "Bar & restaurant · Moville",
+  "taglineShort": "Family-friendly bar and restaurant with open fires, great grub, and stone-baked pizza.",
+  "place": "Moville, Co. Donegal",
+  "address": {
+    "street": "7 Malin Road",
+    "locality": "Moville",
+    "region": "Co. Donegal",
+    "postalCode": "F93 D519",
+    "country": "Ireland",
+    "landmark": "On Malin Road, in the heart of Moville"
+  },
+  "phone": "+353 74 938 5847",
+  "email": "rosatosmoville@gmail.com",
+  "bookingUrl": "https://rosatos.ie/book-now/",
+  "bookingNote": "Bookings are for indoor dining only. Outdoor seating is walk-in.",
+  "mapEmbedUrl": "https://www.google.com/maps?q=Rosatos+Bar+%26+Restaurant,+7+Malin+Road,+Moville&output=embed",
+  "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=7+Malin+Road,+Moville,+Co.+Donegal",
+  "hours": [
+    { "days": "Monday – Friday", "time": "16:00 – 21:00" },
+    { "days": "Saturday", "time": "15:00 – 21:00" },
+    { "days": "Sunday", "time": "12:30 – 21:00" }
+  ],
+  "hoursSummary": "Kitchen from 16:00 weekdays · from 15:00 Sat · from 12:30 Sun",
+  "social": {
+    "instagram": "https://www.instagram.com/rosatosmoville/",
+    "facebook": "https://www.facebook.com/rosatos.bar/"
+  },
+  "giftCards": {
+    "label": "Gift cards",
+    "url": "https://rosatos.ie/product/gift-card/"
+  },
+  "hero": {
+    "image": "./images/hero-rosatos.png",
+    "imageAlt": "Illustration of Rosato’s red façade on Malin Road, Moville"
+  },
+  "room": {
+    "eyebrow": "The room",
+    "title": "Open fires, proper food, and a hundred thousand welcomes.",
+    "body": "Rosato’s is a neighbourhood bar and restaurant on Malin Road — stone floors, old wood, and a room that doesn’t hurry you. Irish and Italian plates, stone-baked pizza, and a pint by the fire.",
+    "image": "./images/fire.jpg",
+    "imageAlt": "Open fire at Rosato’s, Moville"
+  },
+  "visit": {
+    "eyebrow": "Visit",
+    "title": "Find us on Malin Road.",
+    "parkingTip": "Street parking along Malin Road; easier after the school run."
+  },
+  "ordering": {
+    "enabled": false,
+    "mode": "collection",
+    "eyebrow": "Takeaway",
+    "title": "Pizza to take away.",
+    "intro": "Ask at the bar for today’s takeaway menu.",
+    "menuSectionId": "pizza",
+    "leadMinutes": 30,
+    "kitchenCloses": "21:00",
+    "payNote": "Pay when you collect — card or cash.",
+    "minOrder": 0,
+    "successMessage": "Order received. We’ll have it ready for collection."
+  },
+  "credit": {
+    "label": "A Quiet Objects template",
+    "url": "https://quietobjects.ie"
+  }
+}
