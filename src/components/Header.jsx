@@ -1,14 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { getTickerItems } from '../lib/programme.js'
 
-const KIND_ICON = {
-  music: '♪',
-  quiz: '?',
-  poker: '♠',
-  open: '✦',
-  other: '·',
-}
-
 export function Header({ venue }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
@@ -78,9 +70,6 @@ export function Header({ venue }) {
                 className={`events-cue__line${current.highlight ? ' is-today' : ''}`}
                 key={`${current.label}-${current.text}-${index}`}
               >
-                <span className="events-cue__icon" aria-hidden="true">
-                  {KIND_ICON[current.kind] || KIND_ICON.other}
-                </span>
                 <span className="events-cue__label">{current.label}</span>
                 <span className="events-cue__sep" aria-hidden="true">
                   /

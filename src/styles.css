@@ -45,7 +45,7 @@
 
   --radius: 2px;
   --header-h: 4.25rem;
-  --ticker-h: 1.95rem;
+  --ticker-h: 2.45rem;
   --max: 72rem;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -162,7 +162,7 @@ input {
   align-items: center;
   justify-content: center;
   height: var(--ticker-h);
-  padding: 0 4.5rem 0 1rem;
+  padding: 0 3.75rem 0 1rem;
   overflow: hidden;
   text-decoration: none;
   color: rgba(243, 238, 230, 0.78);
@@ -178,21 +178,21 @@ input {
 
 .events-cue__viewport {
   display: block;
-  max-width: min(36rem, 100%);
-  height: 1.15em;
+  max-width: min(40rem, 100%);
+  height: 1.2em;
   overflow: hidden;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 .events-cue__line {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   max-width: 100%;
-  font-size: 0.68rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;
   animation: cue-fade-in 0.85s var(--ease) both;
@@ -206,17 +206,10 @@ input {
   color: var(--forest);
 }
 
-.events-cue__icon {
-  flex: 0 0 auto;
-  font-size: 0.72rem;
-  font-weight: 500;
-  opacity: 0.7;
-}
-
 .events-cue__label {
   flex: 0 0 auto;
   font-weight: 700;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.08em;
 }
 
 .events-cue__sep {
@@ -265,7 +258,7 @@ input {
 }
 
 .site-header.has-order-fab.is-scrolled .site-header__inner {
-  padding-right: calc(6.75rem + 1rem);
+  padding-right: calc(5.5rem + 1rem);
 }
 
 .site-header__brand {
@@ -279,7 +272,7 @@ input {
   color: inherit;
 }
 
-/* Circular Order pizza — bright, large, top-right */
+/* Circular Order pizza — top-right, compact */
 .order-fab {
   position: fixed;
   top: calc(var(--ticker-h) + max(0.45rem, env(safe-area-inset-top, 0px)));
@@ -288,8 +281,8 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 6.75rem;
-  height: 6.75rem;
+  width: 5.5rem;
+  height: 5.5rem;
   border-radius: 50%;
   border: 1px solid var(--order-pop-border);
   background: var(--order-pop);
@@ -309,8 +302,8 @@ input {
 
 .order-fab__text {
   display: block;
-  max-width: 4.4rem;
-  font-size: 0.82rem;
+  max-width: 3.6rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -489,7 +482,7 @@ input {
   width: 100%;
   max-width: none;
   height: auto;
-  max-height: min(64svh, 34.5rem);
+  max-height: min(52svh, 28rem);
   object-fit: contain;
   object-position: center bottom;
   animation: hero-fade 1.4s var(--ease) both;
@@ -511,8 +504,10 @@ input {
 
 .hero--photo .hero__content {
   align-self: end;
-  padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
+  /* Lift copy + Book clear of the phone chrome / home bar */
+  padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
   padding-right: clamp(0, 8vw, 5.5rem);
+  transform: translateY(-1.35rem);
 }
 
 /* Desktop: bigger façade, closer to copy, base on the hero floor */
@@ -1130,7 +1125,7 @@ input {
   }
 
   .site-header.has-order-fab.is-scrolled .site-header__inner {
-    padding-right: calc(6.75rem + 1.25rem);
+    padding-right: calc(5.5rem + 1.25rem);
   }
 
   .site-header__toggle {
@@ -1138,11 +1133,11 @@ input {
   }
 
   .events-cue {
-    padding: 0 5.5rem 0 1.5rem;
+    padding: 0 4.5rem 0 1.5rem;
   }
 
   .events-cue__line {
-    font-size: 0.72rem;
+    font-size: 0.95rem;
   }
 
   .site-nav {
