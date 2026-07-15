@@ -277,7 +277,7 @@ input {
 }
 
 .site-header.has-order-fab.is-scrolled .site-header__inner {
-  padding-right: calc(5.5rem + 1rem);
+  padding-right: calc(4.35rem + 1rem);
 }
 
 .site-header__brand {
@@ -291,53 +291,54 @@ input {
   color: inherit;
 }
 
-/* Circular Order pizza — top-right, compact */
+/* Order pizza — quiet until scrolled; Book owns the landing */
 .order-fab {
   position: fixed;
-  top: calc(var(--ticker-h) + max(0.45rem, env(safe-area-inset-top, 0px)));
+  top: calc(var(--ticker-h) + max(0.4rem, env(safe-area-inset-top, 0px)));
   right: max(0.55rem, env(safe-area-inset-right, 0px));
   z-index: 55;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 4.25rem;
+  height: 4.25rem;
   border-radius: 50%;
-  border: 1px solid var(--order-pop-border);
+  border: 1px solid rgba(15, 58, 49, 0.55);
   background: var(--order-pop);
   color: var(--order-pop-ink);
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 10px 28px rgba(15, 58, 49, 0.28);
-  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s var(--ease);
-  animation: order-fab-in 0.7s var(--ease) 0.35s both;
+  box-shadow: 0 4px 14px rgba(15, 58, 49, 0.16);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.88);
+  transition:
+    opacity 0.28s var(--ease),
+    transform 0.28s var(--ease),
+    box-shadow 0.25s var(--ease),
+    background 0.2s var(--ease);
 }
 
-.order-fab:hover {
-  transform: scale(1.05);
+.order-fab.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.order-fab.is-visible:hover {
+  transform: scale(1.04);
   background: var(--order-pop-hot);
-  box-shadow: 0 14px 32px rgba(15, 58, 49, 0.34);
+  box-shadow: 0 8px 20px rgba(15, 58, 49, 0.22);
 }
 
 .order-fab__text {
   display: block;
-  max-width: 3.6rem;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  max-width: 2.9rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  line-height: 1.12;
-}
-
-@keyframes order-fab-in {
-  from {
-    opacity: 0;
-    transform: scale(0.72);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+  line-height: 1.15;
 }
 
 .whats-on__tonight {
@@ -469,19 +470,25 @@ input {
 
 .hero--photo {
   background-color: var(--forest);
-  /* Sit the façade on the ground plane */
+  /* Stack: copy above, façade owns the lower band */
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-items: stretch;
   padding-bottom: 0;
+  padding-top: calc(var(--ticker-h) + 1.1rem);
 }
 
 .hero--photo .hero__media {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  inset: auto;
+  grid-row: 2;
   z-index: 0;
   background-color: var(--forest);
   display: flex;
   justify-content: center;
   align-items: flex-end;
   overflow: hidden;
+  min-height: 48svh;
 }
 
 .hero__facade {
@@ -489,10 +496,10 @@ input {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  width: min(100%, 40rem);
-  /* Sink slightly past the hero floor so the base reads grounded */
-  margin-bottom: -1.15rem;
-  transform: translateY(0.55rem);
+  width: min(100%, 42rem);
+  height: 100%;
+  margin-bottom: 0;
+  transform: none;
 }
 
 .hero--photo .hero__media img {
@@ -500,8 +507,8 @@ input {
   z-index: 1;
   width: 100%;
   max-width: none;
-  height: auto;
-  max-height: min(52svh, 28rem);
+  height: 100%;
+  max-height: none;
   object-fit: contain;
   object-position: center bottom;
   animation: hero-fade 1.4s var(--ease) both;
@@ -512,30 +519,33 @@ input {
   inset: 0;
   pointer-events: none;
   z-index: 2;
+  /* Soft seam only — don’t wash the brick */
   background: linear-gradient(
     180deg,
-    transparent 0%,
-    transparent 36%,
-    rgba(15, 58, 49, 0.88) 70%,
-    rgba(15, 58, 49, 0.96) 100%
+    rgba(15, 58, 49, 0.28) 0%,
+    transparent 14%,
+    transparent 100%
   );
 }
 
 .hero--photo .hero__content {
-  align-self: end;
-  /* Lift copy + Book clear of the phone chrome / home bar */
-  padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
-  padding-right: clamp(0, 8vw, 5.5rem);
-  transform: translateY(-1.35rem);
+  grid-row: 1;
+  align-self: start;
+  max-width: 28rem;
+  padding-bottom: 0.85rem;
+  padding-right: 0;
+  transform: none;
 }
 
-/* Desktop: bigger façade, closer to copy, base on the hero floor */
+/* Desktop: copy left, façade right on the hero floor */
 @media (min-width: 901px) {
   .hero--photo {
     display: grid;
     grid-template-columns: minmax(16rem, 0.78fr) minmax(24rem, 1.45fr);
+    grid-template-rows: none;
     column-gap: clamp(0, 1vw, 0.75rem);
     align-items: end;
+    padding-top: calc(var(--ticker-h) + 1.75rem);
     padding-right: clamp(0.25rem, 1.5vw, 1rem);
     background-color: var(--forest);
   }
@@ -556,6 +566,7 @@ input {
   .hero__facade {
     width: 112%;
     max-width: none;
+    height: auto;
     margin-bottom: -1.65rem;
     transform: translateY(0.85rem);
     justify-content: flex-start;
@@ -563,6 +574,7 @@ input {
 
   .hero--photo .hero__media img {
     width: 100%;
+    height: auto;
     max-height: calc(100svh - var(--ticker-h) + 1.25rem);
     object-position: left bottom;
   }
@@ -599,7 +611,7 @@ input {
 .hero__name {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(3.6rem, 12vw, 6.5rem);
+  font-size: clamp(3.1rem, 11vw, 6.5rem);
   font-weight: 600;
   line-height: 0.92;
   letter-spacing: -0.03em;
@@ -607,10 +619,10 @@ input {
 }
 
 .hero__tagline {
-  margin: var(--space-3) 0 0;
-  max-width: 24rem;
-  font-size: 1.2rem;
-  line-height: 1.45;
+  margin: var(--space-2) 0 0;
+  max-width: 22rem;
+  font-size: 1.1rem;
+  line-height: 1.4;
   color: rgba(243, 238, 230, 0.86);
 }
 
@@ -618,7 +630,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
 }
 
 /* Coach-inspired: brand rises into view; supporting lines follow */
@@ -1144,7 +1156,7 @@ input {
   }
 
   .site-header.has-order-fab.is-scrolled .site-header__inner {
-    padding-right: calc(5.5rem + 1.25rem);
+    padding-right: calc(4.35rem + 1.25rem);
   }
 
   .site-header__toggle {
