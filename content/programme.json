@@ -10,8 +10,8 @@
       "name": "Texas Hold’em",
       "time": "21:30",
       "kind": "poker",
-      "cue": "Texas Hold’em · from 21:30",
-      "detail": "Texas Hold’em Poker Wednesdays from 21:30"
+      "cue": "Texas Hold’em · 21:30",
+      "detail": "Texas Hold’em Poker Wednesdays · 21:30"
     },
     {
       "day": 5,
@@ -19,8 +19,8 @@
       "name": "QuizKings",
       "time": "22:00",
       "kind": "quiz",
-      "cue": "Fun Quiz · from 22:00",
-      "detail": "QuizKings Fun Quiz Fridays from 22:00"
+      "cue": "Fun Quiz · 22:00",
+      "detail": "QuizKings Fun Quiz Fridays · 22:00"
     },
     {
       "day": 6,
@@ -28,8 +28,8 @@
       "name": "Live Music",
       "time": "22:00",
       "kind": "music",
-      "cue": "Live Music · from 22:00",
-      "detail": "Live Music Saturdays from 22:00"
+      "cue": "Live Music · 22:00",
+      "detail": "Live Music Saturdays · 22:00"
     }
   ],
   "board": [
@@ -38,7 +38,7 @@
       "days": "3",
       "label": "Poker",
       "title": "Wed",
-      "detail": "Texas Hold’em from 21:30",
+      "detail": "Texas Hold’em · 21:30",
       "href": "#whats-on"
     },
     {
@@ -46,7 +46,7 @@
       "days": "5",
       "label": "Quiz",
       "title": "Fri",
-      "detail": "QuizKings from 22:00",
+      "detail": "QuizKings · 22:00",
       "href": "#whats-on"
     },
     {
@@ -54,7 +54,7 @@
       "days": "6",
       "label": "Music",
       "title": "Sat",
-      "detail": "Live music from 22:00",
+      "detail": "Live music · 22:00",
       "href": "#whats-on"
     }
   ]

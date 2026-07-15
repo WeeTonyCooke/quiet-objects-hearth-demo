@@ -206,16 +206,35 @@ input {
   color: var(--forest);
 }
 
-.events-cue__label {
+.events-cue__day {
   flex: 0 0 auto;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 
-.events-cue__sep {
+.events-cue__pipe {
   flex: 0 0 auto;
-  opacity: 0.35;
+  opacity: 0.45;
   font-weight: 500;
+}
+
+.events-cue__kind {
+  flex: 0 0 auto;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.events-cue__dot {
+  flex: 0 0 auto;
+  opacity: 0.45;
+  font-weight: 500;
+}
+
+.events-cue__time {
+  flex: 0 0 auto;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
 }
 
 .events-cue__text {

@@ -50,7 +50,16 @@ export function getTonight(programme, now = new Date()) {
 /**
  * Day-aware ribbon items: Tonight leads when there's an event;
  * otherwise a quiet-house cue, then the week from today forward.
+ * Format: FRI | MUSIC • 22:00
  */
+const KIND_CUE = {
+  music: 'Music',
+  quiz: 'Quiz',
+  poker: 'Poker',
+  open: 'Open',
+  other: 'On',
+}
+
 export function getTickerItems(programme, now = new Date()) {
   const day = now.getDay()
   const lineup = Array.isArray(programme?.lineup) ? programme.lineup : []
@@ -64,11 +73,14 @@ export function getTickerItems(programme, now = new Date()) {
 
   const items = upcoming.map((row) => {
     const isToday = Number(row.day) === day
-    const cue = row.cue || [row.name, row.time].filter(Boolean).join(' · ')
+    const dayPart = (row.dayLabel || 'On').toUpperCase()
+    const kindPart = (KIND_CUE[row.kind] || KIND_CUE.other).toUpperCase()
+    const timePart = row.time || ''
     return {
       kind: row.kind || 'other',
-      label: isToday ? (day === 0 ? 'Sunday' : 'Tonight') : row.dayLabel || 'On',
-      text: isToday ? cue.replace(/^Tonight\s*[·:-]\s*/i, '') : cue,
+      day: dayPart,
+      kindLabel: kindPart,
+      time: timePart,
       highlight: isToday,
     }
   })
@@ -76,14 +88,18 @@ export function getTickerItems(programme, now = new Date()) {
   if (override) {
     items.unshift({
       kind: 'open',
-      label: day === 0 ? 'Sunday' : 'Tonight',
+      day: day === 0 ? 'SUNDAY' : 'TONIGHT',
+      kindLabel: null,
+      time: null,
       text: override,
       highlight: true,
     })
   } else if (!lineup.some((row) => Number(row.day) === day)) {
     items.unshift({
       kind: 'open',
-      label: day === 0 ? 'Sunday' : 'Tonight',
+      day: day === 0 ? 'SUNDAY' : 'TONIGHT',
+      kindLabel: null,
+      time: null,
       text: 'Open fires · great food · stone-baked pizza',
       highlight: true,
     })

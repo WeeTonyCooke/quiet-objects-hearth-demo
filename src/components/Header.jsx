@@ -68,13 +68,29 @@ export function Header({ venue }) {
             <span className="events-cue__viewport">
               <span
                 className={`events-cue__line${current.highlight ? ' is-today' : ''}`}
-                key={`${current.label}-${current.text}-${index}`}
+                key={`${current.day}-${current.kindLabel || current.text}-${current.time || ''}-${index}`}
               >
-                <span className="events-cue__label">{current.label}</span>
-                <span className="events-cue__sep" aria-hidden="true">
-                  /
-                </span>
-                <span className="events-cue__text">{current.text}</span>
+                {current.kindLabel && current.time ? (
+                  <>
+                    <span className="events-cue__day">{current.day}</span>
+                    <span className="events-cue__pipe" aria-hidden="true">
+                      |
+                    </span>
+                    <span className="events-cue__kind">{current.kindLabel}</span>
+                    <span className="events-cue__dot" aria-hidden="true">
+                      •
+                    </span>
+                    <span className="events-cue__time">{current.time}</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="events-cue__day">{current.day}</span>
+                    <span className="events-cue__pipe" aria-hidden="true">
+                      |
+                    </span>
+                    <span className="events-cue__text">{current.text}</span>
+                  </>
+                )}
               </span>
             </span>
           </a>
