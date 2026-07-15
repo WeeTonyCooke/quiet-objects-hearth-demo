@@ -151,13 +151,18 @@ input {
 
 .site-header__inner {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--space-2);
   max-width: var(--max);
   height: 100%;
   margin: 0 auto;
   padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+.site-header.has-order-fab .site-header__inner {
+  /* Room for the circular Order pizza fab at top-right */
+  padding-right: calc(4.75rem + 1rem);
 }
 
 .site-header__brand {
@@ -171,72 +176,99 @@ input {
   color: inherit;
 }
 
-/* Compact utility — pizza as chrome, not a hero shout */
-.order-badge {
-  grid-column: 3;
-  grid-row: 1;
-  display: inline-flex;
+/* Circular Order pizza — floats top-right over the screen */
+.order-fab {
+  position: fixed;
+  top: max(0.65rem, env(safe-area-inset-top, 0px));
+  right: max(0.65rem, env(safe-area-inset-right, 0px));
+  z-index: 55;
+  display: flex;
   align-items: center;
   justify-content: center;
-  justify-self: end;
-  min-height: 2.15rem;
-  padding: 0.35rem 0.8rem;
-  border: 1px solid rgba(246, 243, 236, 0.55);
-  border-radius: var(--radius);
-  background: rgba(246, 243, 236, 0.12);
-  color: var(--hero-ink);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
-}
-
-.order-badge:hover {
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 50%;
   background: var(--bg);
-  border-color: var(--bg);
   color: var(--accent-deep);
+  text-decoration: none;
+  text-align: center;
+  box-shadow:
+    0 10px 28px rgba(13, 51, 40, 0.28),
+    0 0 0 1px rgba(13, 51, 40, 0.08);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s var(--ease);
+  animation: order-fab-in 0.7s var(--ease) 0.35s both;
 }
 
-.site-header.is-scrolled .order-badge {
-  border-color: var(--accent-deep);
-  background: transparent;
-  color: var(--accent-deep);
+.order-fab:hover {
+  transform: scale(1.04);
+  background: #fff;
+  box-shadow:
+    0 14px 32px rgba(13, 51, 40, 0.32),
+    0 0 0 1px rgba(13, 51, 40, 0.1);
 }
 
-.site-header.is-scrolled .order-badge:hover {
-  background: var(--accent-deep);
-  color: var(--on-accent);
+.order-fab__text {
+  display: block;
+  max-width: 3.4rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+@keyframes order-fab-in {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .tonight-cue {
-  display: none;
+  display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  justify-content: center;
+  gap: 0.05rem;
   min-width: 0;
-  margin-inline: 0.5rem auto 0;
-  padding: 0.2rem 0.75rem;
+  grid-column: 2;
+  grid-row: 1;
+  margin-inline: 0.15rem 0;
+  padding: 0.15rem 0.55rem;
   text-decoration: none;
   color: inherit;
   border-left: 1px solid var(--line);
 }
 
 .tonight-cue__label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.72;
 }
 
 .tonight-cue__line {
   overflow: hidden;
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
+  animation: cue-roll 0.55s var(--ease) both;
+}
+
+@keyframes cue-roll {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .site-header:not(.is-scrolled) .tonight-cue {
@@ -269,7 +301,7 @@ input {
   background: transparent;
   cursor: pointer;
   justify-self: end;
-  grid-column: 4;
+  grid-column: 3;
   grid-row: 1;
 }
 
@@ -351,6 +383,11 @@ input {
   border: 1px solid var(--accent-deep);
   background: var(--accent-deep);
   color: var(--on-accent);
+}
+
+/* First viewport: hero owns Book — hide header Book until scrolled (keep in open drawer) */
+.site-header:not(.is-scrolled) .site-nav:not(.is-open) .site-nav__actions {
+  display: none;
 }
 
 /* Hero */
@@ -490,37 +527,6 @@ input {
   color: rgba(246, 243, 236, 0.86);
 }
 
-.hero__tonight {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  margin-top: var(--space-3);
-  max-width: 26rem;
-  padding: 0.65rem 0 0;
-  border-top: 1px solid rgba(246, 243, 236, 0.28);
-  text-decoration: none;
-  color: inherit;
-}
-
-.hero__tonight:hover .hero__tonight-line {
-  color: var(--bg);
-}
-
-.hero__tonight-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(246, 243, 236, 0.7);
-}
-
-.hero__tonight-line {
-  font-size: 1.02rem;
-  font-weight: 500;
-  color: rgba(246, 243, 236, 0.92);
-  transition: color 0.2s var(--ease);
-}
-
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -547,12 +553,8 @@ input {
   animation-delay: 0.55s;
 }
 
-.hero__tonight.hero__reveal {
-  animation-delay: 0.68s;
-}
-
 .hero__actions.hero__reveal {
-  animation-delay: 0.82s;
+  animation-delay: 0.7s;
 }
 
 .btn {
@@ -1051,7 +1053,11 @@ input {
 
 @media (min-width: 720px) {
   .site-header__inner {
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .site-header.has-order-fab .site-header__inner {
+    padding-right: calc(4.75rem + 1.25rem);
   }
 
   .site-header__toggle {
@@ -1059,13 +1065,16 @@ input {
   }
 
   .tonight-cue {
-    display: flex;
+    margin-inline: 0.5rem auto 0;
+    padding: 0.2rem 0.75rem;
   }
 
-  .order-badge {
-    grid-column: 4;
-    grid-row: 1;
-    order: 4;
+  .tonight-cue__label {
+    font-size: 0.68rem;
+  }
+
+  .tonight-cue__line {
+    font-size: 0.88rem;
   }
 
   .site-nav {
@@ -1110,7 +1119,7 @@ input {
     font-size: 0.92rem;
   }
 
-  /* On green hero: cream Book — pizza stays a quiet badge */
+  /* On green hero: cream Book when scrolled header isn’t active yet — but Book is hidden then */
   .site-header:not(.is-scrolled) .site-nav__primary {
     border-color: var(--bg);
     background: var(--bg);
