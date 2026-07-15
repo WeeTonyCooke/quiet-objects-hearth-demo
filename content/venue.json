@@ -1,6 +1,6 @@
 {
-  "name": "Rosato’s",
-  "tagline": "Bar & restaurant · Moville",
+  "name": "Rosato\u2019s",
+  "tagline": "Bar & restaurant \u00b7 Moville",
   "taglineShort": "Family-friendly bar and restaurant with open fires, great grub, and stone-baked pizza.",
   "place": "Moville, Co. Donegal",
   "address": {
@@ -18,11 +18,20 @@
   "mapEmbedUrl": "https://www.google.com/maps?q=Rosatos+Bar+%26+Restaurant,+7+Malin+Road,+Moville&output=embed",
   "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=7+Malin+Road,+Moville,+Co.+Donegal",
   "hours": [
-    { "days": "Monday – Friday", "time": "16:00 – 21:00" },
-    { "days": "Saturday", "time": "15:00 – 21:00" },
-    { "days": "Sunday", "time": "12:30 – 21:00" }
+    {
+      "days": "Monday \u2013 Friday",
+      "time": "16:00 \u2013 21:00"
+    },
+    {
+      "days": "Saturday",
+      "time": "15:00 \u2013 21:00"
+    },
+    {
+      "days": "Sunday",
+      "time": "12:30 \u2013 21:00"
+    }
   ],
-  "hoursSummary": "Kitchen from 16:00 weekdays · from 15:00 Sat · from 12:30 Sun",
+  "hoursSummary": "Kitchen from 16:00 weekdays \u00b7 from 15:00 Sat \u00b7 from 12:30 Sun",
   "social": {
     "instagram": "https://www.instagram.com/rosatosmoville/",
     "facebook": "https://www.facebook.com/rosatos.bar/"
@@ -33,14 +42,14 @@
   },
   "hero": {
     "image": "/images/hero.png",
-    "imageAlt": "Illustration of Rosato’s red façade on Malin Road, Moville"
+    "imageAlt": "Illustration of Rosato\u2019s red fa\u00e7ade on Malin Road, Moville"
   },
   "room": {
     "eyebrow": "The room",
     "title": "Open fires, proper food, and a hundred thousand welcomes.",
-    "body": "Rosato’s is a neighbourhood bar and restaurant on Malin Road — stone floors, old wood, and a room that doesn’t hurry you. Irish and Italian plates, stone-baked pizza, and a pint by the fire.",
+    "body": "Rosato\u2019s is a neighbourhood bar and restaurant on Malin Road \u2014 stone floors, old wood, and a room that doesn\u2019t hurry you. Irish and Italian plates, stone-baked pizza, and a pint by the fire.",
     "image": "/images/room.jpg",
-    "imageAlt": "Open fire in the hearth at Rosato’s"
+    "imageAlt": "Open fire in the stone hearth at Rosato\u2019s"
   },
   "visit": {
     "eyebrow": "Visit",
@@ -52,13 +61,13 @@
     "mode": "collection",
     "eyebrow": "Order pizza",
     "title": "Collection only.",
-    "intro": "Choose your pizzas online and collect from the bar. We don’t deliver — pay when you pick up.",
+    "intro": "Choose your pizzas online and collect from the bar. We don\u2019t deliver \u2014 pay when you pick up.",
     "menuSectionId": "pizza",
     "leadMinutes": 30,
     "kitchenCloses": "21:00",
-    "payNote": "Pay on collection — card or cash.",
+    "payNote": "Pay on collection \u2014 card or cash.",
     "minOrder": 0,
-    "successMessage": "Order received. We’ll have it ready for collection."
+    "successMessage": "Order received. We\u2019ll have it ready for collection."
   },
   "credit": {
     "label": "A Quiet Objects template",
