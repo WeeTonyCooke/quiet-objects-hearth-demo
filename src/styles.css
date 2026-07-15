@@ -9,10 +9,13 @@
   --bg-soft: #efebe3;
   /* Drop Cloth No.283 — trim / hairline only */
   --drop-cloth: #c5bdac;
-  /* Card Room Green No.79 + deeper for type/CTAs */
-  --accent: #878f81;
-  --accent-deep: #5c6358;
-  --accent-soft: rgba(92, 99, 88, 0.1);
+  /* Rosato’s façade green — brand ground + accents */
+  --rosato-green: #1a3d30;
+  --rosato-green-mid: #2b5341;
+  /* Card Room Green kept as soft secondary; deep CTA uses Rosato green */
+  --accent: #3d6b55;
+  --accent-deep: #1a3d30;
+  --accent-soft: rgba(26, 61, 48, 0.1);
   /* Strong ink — nothing gets lost */
   --ink: #1c1e1b;
   --ink-muted: rgba(28, 30, 27, 0.7);
@@ -321,35 +324,71 @@ input {
 }
 
 .hero--paint {
-  background: var(--accent);
+  background: var(--rosato-green);
+}
+
+.hero--photo {
+  background: var(--rosato-green);
 }
 
 .hero--photo .hero__media {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* Paper behind illustration so contain letterboxing matches the art */
-  background: var(--bg);
+  background: var(--rosato-green);
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
 }
 
 .hero--photo .hero__media img {
-  width: 100%;
+  width: auto;
+  max-width: min(62%, 40rem);
   height: 100%;
   object-fit: contain;
-  object-position: center center;
+  object-position: right center;
   animation: hero-fade 1.4s var(--ease) both;
 }
 
 .hero--photo .hero__veil {
   position: absolute;
   inset: 0;
-  /* Soft bottom shade only — keep the façade readable; text sits on the veil */
+  pointer-events: none;
+  /* Soft left hold for type — green does the work, no heavy wash over the façade */
   background: linear-gradient(
-    180deg,
-    rgba(28, 30, 27, 0.08) 0%,
-    rgba(28, 30, 27, 0.12) 45%,
-    rgba(28, 30, 27, 0.72) 100%
+    90deg,
+    rgba(26, 61, 48, 0.55) 0%,
+    rgba(26, 61, 48, 0.2) 38%,
+    transparent 58%
   );
+}
+
+@media (max-width: 800px) {
+  .hero--photo .hero__media {
+    align-items: flex-start;
+    padding-top: var(--header-h);
+  }
+
+  .hero--photo .hero__media img {
+    max-width: 92%;
+    height: min(52svh, 24rem);
+    margin: 0 auto;
+    object-position: center top;
+  }
+
+  .hero--photo .hero__veil {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(26, 61, 48, 0.88) 72%,
+      rgba(26, 61, 48, 0.96) 100%
+    );
+  }
+
+  .hero--photo .hero__content {
+    align-self: end;
+  }
 }
 
 .hero__content {
