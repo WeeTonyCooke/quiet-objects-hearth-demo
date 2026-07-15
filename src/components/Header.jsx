@@ -1,25 +1,29 @@
 import { useEffect, useMemo, useState } from 'react'
-import { getTonight } from '../lib/programme.js'
+import { getTickerItems } from '../lib/programme.js'
 
-function useEventLine(programme) {
-  return useMemo(() => {
-    const lineup = Array.isArray(programme?.lineup) ? programme.lineup : []
-    if (lineup.length) {
-      return lineup.map((row) => {
-        const cue = row.cue || [row.name, row.time].filter(Boolean).join(' · ')
-        return [row.dayLabel, cue].filter(Boolean).join(' · ')
-      })
-    }
-    const tonight = getTonight(programme)
-    return tonight.short ? [`${tonight.label} · ${tonight.short}`] : []
-  }, [programme])
+const KIND_ICON = {
+  music: '♪',
+  quiz: '?',
+  poker: '♠',
+  open: '✦',
+  other: '·',
+}
+
+function TickerIcon({ kind }) {
+  return (
+    <span className="events-ticker__icon" aria-hidden="true">
+      {KIND_ICON[kind] || KIND_ICON.other}
+    </span>
+  )
 }
 
 export function Header({ venue }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [now, setNow] = useState(() => new Date())
   const canOrder = Boolean(venue.ordering?.enabled)
-  const events = useEventLine(venue.programme)
+
+  const events = useMemo(() => getTickerItems(venue.programme, now), [venue.programme, now])
   const tickerItems = events.length ? [...events, ...events, ...events] : []
 
   useEffect(() => {
@@ -46,6 +50,16 @@ export function Header({ venue }) {
     if (!scrolled && open) setOpen(false)
   }, [scrolled, open])
 
+  // Refresh ribbon content when the calendar day rolls over
+  useEffect(() => {
+    const tick = () => {
+      const next = new Date()
+      setNow((prev) => (prev.getDay() === next.getDay() ? prev : next))
+    }
+    const id = window.setInterval(tick, 60_000)
+    return () => window.clearInterval(id)
+  }, [])
+
   const close = () => setOpen(false)
 
   return (
@@ -57,8 +71,19 @@ export function Header({ venue }) {
           <a className="events-ticker" href="#whats-on" onClick={close} aria-label="What’s on this week">
             <span className="events-ticker__track">
               {tickerItems.map((item, index) => (
-                <span className="events-ticker__item" key={`${item}-${index}`}>
-                  {item}
+                <span
+                  className={`events-ticker__item${item.highlight ? ' is-today' : ''}`}
+                  key={`${item.label}-${item.text}-${index}`}
+                >
+                  <TickerIcon kind={item.kind} />
+                  <span className="events-ticker__label">{item.label}</span>
+                  <span className="events-ticker__sep" aria-hidden="true">
+                    /
+                  </span>
+                  <span className="events-ticker__text">{item.text}</span>
+                  <span className="events-ticker__diamond" aria-hidden="true">
+                    ◇
+                  </span>
                 </span>
               ))}
             </span>
