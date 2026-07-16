@@ -488,7 +488,7 @@ body:has(.cart-fab) .order-fab {
   align-items: flex-end;
   width: 100%;
   min-height: 0;
-  margin-top: 0.7rem;
+  margin-top: 0.4rem;
   overflow: visible;
   background-color: transparent;
 }
@@ -499,9 +499,9 @@ body:has(.cart-fab) .order-fab {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(100%, 18.25rem);
+  width: min(100%, 18.5rem);
   /* Optical centre — sign throws right, façade mass throws left */
-  transform: translateX(0.7rem);
+  transform: translateX(0.75rem);
 }
 
 .hero__facade {
