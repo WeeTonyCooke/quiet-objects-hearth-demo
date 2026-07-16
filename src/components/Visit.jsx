@@ -81,7 +81,7 @@ export function Visit({ venue }) {
             <p className="visit__enquiry">
               {bookingEnquiry}{' '}
               <a href={phoneHref}>{phone}</a>
-              {' or '}
+              {' · '}
               <a href={`mailto:${email}`}>{email}</a>
             </p>
           ) : null}
