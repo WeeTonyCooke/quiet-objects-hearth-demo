@@ -162,8 +162,8 @@ input {
   align-items: center;
   justify-content: center;
   height: var(--ticker-h);
-  /* Equal sides so the line truly centres (room for Order pizza) */
-  padding: 0 4.5rem;
+  /* Room for Order pizza without shoving the cue off-centre */
+  padding: 0 4rem;
   overflow: hidden;
   text-decoration: none;
   color: rgba(243, 238, 230, 0.78);
@@ -329,14 +329,14 @@ input {
 /* Order pizza — quiet, always available from the landing */
 .order-fab {
   position: fixed;
-  top: calc(var(--ticker-h) + max(0.4rem, env(safe-area-inset-top, 0px)));
-  right: max(0.55rem, env(safe-area-inset-right, 0px));
+  top: calc(var(--ticker-h) + max(0.35rem, env(safe-area-inset-top, 0px)));
+  right: max(0.5rem, env(safe-area-inset-right, 0px));
   z-index: 55;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4.25rem;
-  height: 4.25rem;
+  width: 3.85rem;
+  height: 3.85rem;
   border-radius: 50%;
   border: 1px solid rgba(15, 58, 49, 0.55);
   background: var(--order-pop);
@@ -348,6 +348,13 @@ input {
     transform 0.25s var(--ease),
     box-shadow 0.25s var(--ease),
     background 0.2s var(--ease);
+}
+
+@media (min-width: 901px) {
+  .order-fab {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
 }
 
 .order-fab:hover {
@@ -495,27 +502,31 @@ input {
 
 .hero--photo {
   background-color: var(--forest);
-  /* Stack: copy above, façade owns the lower band */
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  /* One mobile composition: cue → name/CTA → building/caption */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: stretch;
-  padding-bottom: 0;
-  /* Breathe under the events cue so the name isn’t hard against the top */
-  padding-top: calc(var(--ticker-h) + clamp(2.5rem, 7vh, 3.75rem));
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding:
+    calc(var(--ticker-h) + 0.85rem)
+    1.25rem
+    max(0.9rem, env(safe-area-inset-bottom, 0px));
+  gap: 0.65rem;
 }
 
 .hero--photo .hero__media {
   position: relative;
-  inset: auto;
-  grid-row: 2;
   z-index: 0;
-  background-color: var(--forest);
+  flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  overflow: hidden;
-  min-height: 44svh;
-  padding-bottom: clamp(1.25rem, 4vh, 2rem);
+  min-height: 0;
+  margin-top: 0.35rem;
+  overflow: visible;
+  background-color: var(--forest);
 }
 
 .hero__stage {
@@ -524,7 +535,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(100%, 42rem);
+  width: min(100%, 21.5rem);
 }
 
 .hero__facade {
@@ -541,6 +552,7 @@ input {
   display: block;
   width: 100%;
   height: auto;
+  max-height: min(46svh, 20.5rem);
   object-fit: contain;
   object-position: center bottom;
   animation: hero-fade 1.4s var(--ease) both;
@@ -549,44 +561,43 @@ input {
 .hero__tagline--under {
   position: relative;
   z-index: 3;
-  margin: 0.7rem 0 0;
+  margin: 0.55rem 0 0;
   width: 100%;
-  max-width: 20rem;
-  padding: 0 0.5rem;
+  max-width: 17rem;
+  padding: 0;
   text-align: center;
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   line-height: 1.35;
   color: rgba(243, 238, 230, 0.78);
 }
 
 .hero--photo .hero__veil {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  /* Soft seam only — don’t wash the brick */
-  background: linear-gradient(
-    180deg,
-    rgba(15, 58, 49, 0.28) 0%,
-    transparent 14%,
-    transparent 100%
-  );
+  display: none;
 }
 
 .hero--photo .hero__content {
-  grid-row: 1;
-  align-self: start;
-  justify-self: center;
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
   width: 100%;
-  max-width: 28rem;
-  padding-bottom: 1.15rem;
-  padding-right: 0;
-  transform: none;
+  max-width: 22rem;
+  margin: 0 auto;
+  padding: 0.15rem 2.75rem 0;
   text-align: center;
+}
+
+.hero--photo .hero__name {
+  font-size: clamp(2.55rem, 11.5vw, 3.35rem);
 }
 
 .hero--photo .hero__actions {
   justify-content: center;
+  margin-top: 0.8rem;
+}
+
+.hero--photo .btn--on-hero {
+  min-height: 2.65rem;
+  padding: 0.65rem 1.2rem;
 }
 
 /* Desktop: copy left, façade + caption as one unit on the right */
@@ -597,53 +608,41 @@ input {
     grid-template-rows: none;
     column-gap: clamp(0.5rem, 2vw, 1.5rem);
     align-items: end;
+    justify-content: initial;
+    gap: 0;
+    min-height: 100svh;
     padding-top: calc(var(--ticker-h) + 1.75rem);
     padding-right: clamp(0.75rem, 2vw, 1.5rem);
     padding-bottom: clamp(1.25rem, 3vh, 2rem);
+    padding-left: clamp(1rem, 3vw, 2rem);
     background-color: var(--forest);
   }
 
   .hero--photo .hero__media {
-    position: relative;
-    inset: auto;
     grid-column: 2;
     grid-row: 1;
     align-self: end;
+    flex: initial;
     justify-content: flex-start;
     align-items: flex-end;
-    background-color: var(--forest);
     min-height: 0;
     height: auto;
+    margin-top: 0;
     overflow: visible;
-    padding-bottom: 0;
   }
 
   .hero__stage {
-    align-items: center;
     width: min(100%, 46rem);
-    margin-left: 0;
-  }
-
-  .hero__facade {
-    width: 100%;
   }
 
   .hero--photo .hero__media img {
-    width: 100%;
-    height: auto;
     max-height: calc(100svh - var(--ticker-h) - 5.5rem);
-    object-position: center bottom;
-  }
-
-  .hero--photo .hero__veil {
-    display: none;
   }
 
   .hero__tagline--under {
     margin: 0.85rem 0 0;
     max-width: 22rem;
-    padding: 0;
-    text-align: center;
+    font-size: 0.98rem;
   }
 
   .hero--photo .hero__content {
@@ -652,13 +651,23 @@ input {
     align-self: center;
     justify-self: start;
     max-width: 26rem;
-    padding-bottom: 0;
-    transform: none;
+    margin: 0;
+    padding: 0;
     text-align: left;
+  }
+
+  .hero--photo .hero__name {
+    font-size: clamp(3.1rem, 6vw, 6.5rem);
   }
 
   .hero--photo .hero__actions {
     justify-content: flex-start;
+    margin-top: var(--space-3);
+  }
+
+  .hero--photo .btn--on-hero {
+    min-height: 2.85rem;
+    padding: 0.7rem 1.35rem;
   }
 }
 
