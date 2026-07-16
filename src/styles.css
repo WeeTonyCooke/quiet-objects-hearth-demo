@@ -158,8 +158,8 @@ input {
   align-items: center;
   justify-content: center;
   height: var(--ticker-h);
-  /* Room for Order pizza without shoving the cue off-centre */
-  padding: 0 4rem;
+  /* Fab sits below the cue — keep the ticker optically centred */
+  padding: 0 1rem;
   overflow: hidden;
   text-decoration: none;
   color: rgba(243, 238, 230, 0.78);
@@ -321,11 +321,12 @@ input {
   color: inherit;
 }
 
-/* Order pizza — quiet, always available from the landing */
+/* Order pizza — independent FAB, not part of the centred hero column */
 .order-fab {
   position: fixed;
-  top: calc(var(--ticker-h) + max(0.35rem, env(safe-area-inset-top, 0px)));
-  right: max(0.5rem, env(safe-area-inset-right, 0px));
+  /* Drop below the ticker so the hero column can centre without competing weight */
+  top: calc(var(--ticker-h) + 1.15rem + env(safe-area-inset-top, 0px));
+  right: max(0.2rem, env(safe-area-inset-right, 0px));
   z-index: 55;
   display: flex;
   align-items: center;
@@ -347,6 +348,8 @@ input {
 
 @media (min-width: 901px) {
   .order-fab {
+    top: calc(var(--ticker-h) + 1.35rem + env(safe-area-inset-top, 0px));
+    right: max(0.35rem, env(safe-area-inset-right, 0px));
     width: 4.25rem;
     height: 4.25rem;
   }
@@ -451,29 +454,31 @@ input {
 
 .hero--photo {
   background-color: var(--forest);
-  /* One mobile composition: cue → name/CTA → building/caption */
+  /* One mobile composition: name → CTA → building → caption — optically one column */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;
-  min-height: 100svh;
-  min-height: 100dvh;
+  align-items: center;
+  /* Content-sized so the next section can peek; forest still reads as the landing */
+  min-height: 0;
   padding:
-    calc(var(--ticker-h) + 0.85rem)
+    calc(var(--ticker-h) + 0.7rem)
     1.25rem
-    max(0.9rem, env(safe-area-inset-bottom, 0px));
-  gap: 0.65rem;
+    max(1rem, env(safe-area-inset-bottom, 0px));
+  gap: 0;
 }
 
 .hero--photo .hero__media {
   position: relative;
   z-index: 0;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  width: 100%;
   min-height: 0;
-  margin-top: 0.35rem;
+  /* ~48px tighter than the old flex-grown void under the CTA */
+  margin-top: 0.55rem;
   overflow: visible;
   background-color: var(--forest);
 }
@@ -484,7 +489,9 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(100%, 21.5rem);
+  width: min(100%, 19.75rem);
+  /* Optical centre: façade mass sits left of the sign — nudge the unit right */
+  transform: translateX(0.55rem);
 }
 
 .hero__facade {
@@ -501,7 +508,8 @@ input {
   display: block;
   width: 100%;
   height: auto;
-  max-height: min(46svh, 20.5rem);
+  /* ~8% smaller — keeps the building focal without eating the viewport */
+  max-height: min(40svh, 18.75rem);
   object-fit: contain;
   object-position: center bottom;
   animation: hero-fade 1.4s var(--ease) both;
@@ -510,7 +518,7 @@ input {
 .hero__tagline--under {
   position: relative;
   z-index: 3;
-  margin: 0.55rem 0 0;
+  margin: 0.3rem 0 0;
   width: 100%;
   max-width: 17rem;
   padding: 0;
@@ -529,9 +537,10 @@ input {
   z-index: 1;
   flex: 0 0 auto;
   width: 100%;
-  max-width: 22rem;
+  max-width: 20rem;
   margin: 0 auto;
-  padding: 0.15rem 2.75rem 0;
+  /* Symmetric — fab no longer steals the right side of the hero column */
+  padding: 0.1rem 0 0;
   text-align: center;
 }
 
@@ -541,7 +550,7 @@ input {
 
 .hero--photo .hero__actions {
   justify-content: center;
-  margin-top: 0.8rem;
+  margin-top: 0.65rem;
 }
 
 .hero--photo .btn--on-hero {
@@ -582,6 +591,7 @@ input {
 
   .hero__stage {
     width: min(100%, 46rem);
+    transform: none;
   }
 
   .hero--photo .hero__media img {
@@ -648,10 +658,6 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: var(--space-3);
-}
-
-.hero--photo .hero__actions {
   margin-top: var(--space-3);
 }
 
@@ -1218,7 +1224,7 @@ input {
   }
 
   .events-cue {
-    padding: 0 4.5rem;
+    padding: 0 5rem;
   }
 
   .events-cue__line {
