@@ -321,12 +321,12 @@ input {
   color: inherit;
 }
 
-/* Order pizza — independent FAB, not part of the centred hero column */
+/* Order pizza — bottom FAB on mobile so it never leans the hero */
 .order-fab {
   position: fixed;
-  /* Drop below the ticker so the hero column can centre without competing weight */
-  top: calc(var(--ticker-h) + 1.15rem + env(safe-area-inset-top, 0px));
-  right: max(0.2rem, env(safe-area-inset-right, 0px));
+  top: auto;
+  right: max(0.75rem, env(safe-area-inset-right, 0px));
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   z-index: 55;
   display: flex;
   align-items: center;
@@ -343,13 +343,21 @@ input {
   transition:
     transform 0.25s var(--ease),
     box-shadow 0.25s var(--ease),
-    background 0.2s var(--ease);
+    background 0.2s var(--ease),
+    opacity 0.25s var(--ease);
+}
+
+/* Cart owns the lower-right while an order is in progress */
+body:has(.cart-fab) .order-fab {
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media (min-width: 901px) {
   .order-fab {
-    top: calc(var(--ticker-h) + 1.35rem + env(safe-area-inset-top, 0px));
-    right: max(0.35rem, env(safe-area-inset-right, 0px));
+    top: calc(var(--ticker-h) + 1rem + env(safe-area-inset-top, 0px));
+    right: max(0.75rem, env(safe-area-inset-right, 0px));
+    bottom: auto;
     width: 4.25rem;
     height: 4.25rem;
   }
@@ -454,17 +462,20 @@ input {
 
 .hero--photo {
   background-color: var(--forest);
-  /* One mobile composition: name → CTA → building → caption — optically one column */
+  /*
+    Mobile: one optically centred stack (name → CTA → building → caption).
+    justify-content centres the group; internal gaps stay tight — no flex-grown void.
+  */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  /* Content-sized so the next section can peek; forest still reads as the landing */
-  min-height: 0;
+  min-height: 100svh;
+  min-height: 100dvh;
   padding:
-    calc(var(--ticker-h) + 0.7rem)
+    calc(var(--ticker-h) + 0.35rem)
     1.25rem
-    max(1rem, env(safe-area-inset-bottom, 0px));
+    max(1.25rem, env(safe-area-inset-bottom, 0px));
   gap: 0;
 }
 
@@ -477,10 +488,9 @@ input {
   align-items: flex-end;
   width: 100%;
   min-height: 0;
-  /* ~48px tighter than the old flex-grown void under the CTA */
-  margin-top: 0.55rem;
+  margin-top: 0.7rem;
   overflow: visible;
-  background-color: var(--forest);
+  background-color: transparent;
 }
 
 .hero__stage {
@@ -489,9 +499,9 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(100%, 19.75rem);
-  /* Optical centre: façade mass sits left of the sign — nudge the unit right */
-  transform: translateX(0.55rem);
+  width: min(100%, 18.25rem);
+  /* Optical centre — sign throws right, façade mass throws left */
+  transform: translateX(0.7rem);
 }
 
 .hero__facade {
@@ -508,8 +518,7 @@ input {
   display: block;
   width: 100%;
   height: auto;
-  /* ~8% smaller — keeps the building focal without eating the viewport */
-  max-height: min(40svh, 18.75rem);
+  max-height: min(34svh, 16.25rem);
   object-fit: contain;
   object-position: center bottom;
   animation: hero-fade 1.4s var(--ease) both;
@@ -518,12 +527,12 @@ input {
 .hero__tagline--under {
   position: relative;
   z-index: 3;
-  margin: 0.3rem 0 0;
+  margin: 0.35rem 0 0;
   width: 100%;
-  max-width: 17rem;
+  max-width: 16.5rem;
   padding: 0;
   text-align: center;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.35;
   color: rgba(243, 238, 230, 0.78);
 }
@@ -539,23 +548,22 @@ input {
   width: 100%;
   max-width: 20rem;
   margin: 0 auto;
-  /* Symmetric — fab no longer steals the right side of the hero column */
-  padding: 0.1rem 0 0;
+  padding: 0;
   text-align: center;
 }
 
 .hero--photo .hero__name {
-  font-size: clamp(2.55rem, 11.5vw, 3.35rem);
+  font-size: clamp(2.45rem, 11vw, 3.2rem);
 }
 
 .hero--photo .hero__actions {
   justify-content: center;
-  margin-top: 0.65rem;
+  margin-top: 0.55rem;
 }
 
 .hero--photo .btn--on-hero {
-  min-height: 2.65rem;
-  padding: 0.65rem 1.2rem;
+  min-height: 2.55rem;
+  padding: 0.6rem 1.15rem;
 }
 
 /* Desktop: copy left, façade + caption as one unit on the right */
