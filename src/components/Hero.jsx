@@ -18,16 +18,18 @@ export function Hero({ venue }) {
 
       {hasPhoto ? (
         <div className="hero__media">
-          <div className="hero__facade" aria-hidden="true">
-            <img
-              src={venue.hero.image}
-              alt=""
-              width="1854"
-              height="1854"
-              fetchPriority="high"
-            />
+          <div className="hero__stage">
+            <div className="hero__facade" aria-hidden="true">
+              <img
+                src={venue.hero.image}
+                alt=""
+                width="1854"
+                height="1854"
+                fetchPriority="high"
+              />
+            </div>
+            <p className="hero__tagline hero__tagline--under hero__reveal">{venue.tagline}</p>
           </div>
-          <p className="hero__tagline hero__tagline--under hero__reveal">{venue.tagline}</p>
           <div className="hero__veil" aria-hidden="true" />
         </div>
       ) : (

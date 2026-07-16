@@ -511,33 +511,36 @@ input {
   z-index: 0;
   background-color: var(--forest);
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-end;
   overflow: hidden;
   min-height: 44svh;
   padding-bottom: clamp(1.25rem, 4vh, 2rem);
 }
 
+.hero__stage {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 42rem);
+}
+
 .hero__facade {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: min(100%, 42rem);
-  flex: 1 1 auto;
-  min-height: 0;
-  margin-bottom: 0;
-  transform: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  line-height: 0;
 }
 
 .hero--photo .hero__media img {
   position: relative;
   z-index: 1;
+  display: block;
   width: 100%;
-  max-width: none;
-  height: 100%;
-  max-height: none;
+  height: auto;
   object-fit: contain;
   object-position: center bottom;
   animation: hero-fade 1.4s var(--ease) both;
@@ -546,9 +549,10 @@ input {
 .hero__tagline--under {
   position: relative;
   z-index: 3;
-  margin: 0.85rem auto 0;
-  max-width: 18rem;
-  padding: 0 1rem;
+  margin: 0.7rem 0 0;
+  width: 100%;
+  max-width: 20rem;
+  padding: 0 0.5rem;
   text-align: center;
   font-size: 0.98rem;
   line-height: 1.35;
@@ -585,16 +589,17 @@ input {
   justify-content: center;
 }
 
-/* Desktop: copy left, façade right on the hero floor */
+/* Desktop: copy left, façade + caption as one unit on the right */
 @media (min-width: 901px) {
   .hero--photo {
     display: grid;
     grid-template-columns: minmax(16rem, 0.78fr) minmax(24rem, 1.45fr);
     grid-template-rows: none;
-    column-gap: clamp(0, 1vw, 0.75rem);
+    column-gap: clamp(0.5rem, 2vw, 1.5rem);
     align-items: end;
     padding-top: calc(var(--ticker-h) + 1.75rem);
-    padding-right: clamp(0.25rem, 1.5vw, 1rem);
+    padding-right: clamp(0.75rem, 2vw, 1.5rem);
+    padding-bottom: clamp(1.25rem, 3vh, 2rem);
     background-color: var(--forest);
   }
 
@@ -603,30 +608,31 @@ input {
     inset: auto;
     grid-column: 2;
     grid-row: 1;
-    justify-content: flex-end;
-    align-items: flex-start;
+    align-self: end;
+    justify-content: flex-start;
+    align-items: flex-end;
     background-color: var(--forest);
-    min-height: calc(100svh - var(--ticker-h));
-    height: 100%;
+    min-height: 0;
+    height: auto;
     overflow: visible;
-    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    padding-bottom: 0;
+  }
+
+  .hero__stage {
+    align-items: center;
+    width: min(100%, 46rem);
+    margin-left: 0;
   }
 
   .hero__facade {
-    width: 112%;
-    max-width: none;
-    height: auto;
-    flex: 0 1 auto;
-    margin-bottom: -0.35rem;
-    transform: translateY(0.85rem);
-    justify-content: flex-start;
+    width: 100%;
   }
 
   .hero--photo .hero__media img {
     width: 100%;
     height: auto;
-    max-height: calc(100svh - var(--ticker-h) - 3.5rem);
-    object-position: left bottom;
+    max-height: calc(100svh - var(--ticker-h) - 5.5rem);
+    object-position: center bottom;
   }
 
   .hero--photo .hero__veil {
@@ -634,10 +640,10 @@ input {
   }
 
   .hero__tagline--under {
-    margin: 0.5rem 0 0 0.35rem;
-    max-width: 20rem;
+    margin: 0.85rem 0 0;
+    max-width: 22rem;
     padding: 0;
-    text-align: left;
+    text-align: center;
   }
 
   .hero--photo .hero__content {
@@ -646,7 +652,7 @@ input {
     align-self: center;
     justify-self: start;
     max-width: 26rem;
-    padding-bottom: clamp(2.5rem, 7vw, 4.5rem);
+    padding-bottom: 0;
     transform: none;
     text-align: left;
   }
