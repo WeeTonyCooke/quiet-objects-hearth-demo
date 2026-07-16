@@ -186,8 +186,8 @@ export function OrderPizza() {
       </ul>
 
       <p className="order__note">
-        Ready from about {ordering.leadMinutes} minutes · Kitchen until {ordering.kitchenCloses} ·{' '}
-        {ordering.payNote}
+        {ordering.leadNote || `Usually ready in around ${ordering.leadMinutes} minutes.`} · Kitchen
+        until {ordering.kitchenCloses} · {ordering.payNote}
       </p>
     </section>
   )

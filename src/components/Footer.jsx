@@ -7,7 +7,7 @@ export function Footer({ venue }) {
       <div className="site-footer__inner">
         <div className="site-footer__brand">
           <strong>{venue.name}</strong>
-          <p>{venue.tagline}</p>
+          <p>{venue.footerLine || venue.tagline}</p>
         </div>
 
         <div className="site-footer__meta">

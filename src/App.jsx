@@ -7,6 +7,7 @@ import { CartProvider } from './cart/CartContext.jsx'
 import { Header } from './components/Header.jsx'
 import { Hero } from './components/Hero.jsx'
 import { Room } from './components/Room.jsx'
+import { Pint } from './components/Pint.jsx'
 import { Menu } from './components/Menu.jsx'
 import { OrderPizza } from './components/OrderPizza.jsx'
 import { CartDrawer } from './components/CartDrawer.jsx'
@@ -59,6 +60,7 @@ function AppShell() {
       <main id="main">
         <Hero venue={venue} />
         <Room venue={venue} />
+        <Pint venue={venue} />
         <Menu venue={venue} />
         <OrderPizza />
         <WhatsOn venue={venue} />

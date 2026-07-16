@@ -742,9 +742,10 @@ input {
 }
 
 .room__figure img {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   filter: saturate(0.9) contrast(1.05);
 }
 
@@ -764,6 +765,69 @@ input {
 
 .room__grid--solo .room__swatch {
   min-height: 14rem;
+}
+
+/* Great pints — green field, one photo */
+
+.pint {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.pint__inner {
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--space-6) clamp(1rem, 3vw, 2rem);
+}
+
+.pint__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+
+.pint__body {
+  margin: var(--space-3) 0 0;
+  max-width: 22rem;
+  color: rgba(243, 238, 230, 0.78);
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.pint__figure {
+  margin: 0;
+  justify-self: stretch;
+}
+
+.pint__figure img {
+  display: block;
+  width: 100%;
+  max-height: min(70vh, 36rem);
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius);
+}
+
+@media (min-width: 780px) {
+  .pint__inner {
+    grid-template-columns: minmax(12rem, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--space-5);
+  }
+
+  .pint__figure {
+    justify-self: end;
+    width: min(100%, 28rem);
+  }
 }
 
 /* Menu */

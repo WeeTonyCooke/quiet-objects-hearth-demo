@@ -1,6 +1,7 @@
 {
   "name": "Rosato\u2019s",
   "tagline": "A family-friendly bar serving great food.",
+  "footerLine": "Good food. Friendly service. Right in the heart of Moville.",
   "place": "Moville, Co. Donegal",
   "address": {
     "street": "7 Malin Road",
@@ -8,14 +9,14 @@
     "region": "Co. Donegal",
     "postalCode": "F93 D519",
     "country": "Ireland",
-    "landmark": "On Malin Road, in the heart of Moville"
+    "landmark": "You’ll find us on Malin Road, just a short walk from Moville town centre."
   },
   "phone": "+353 74 938 5847",
   "email": "rosatosmoville@gmail.com",
   "bookingUrl": "#visit",
   "bookingWidgetUrl": "https://booking.resdiary.com/widget/ThreeMonth/Rosatos/25888",
   "bookingNote": "Bookings are for indoor dining only. Outdoor seating is walk-in.",
-  "bookingEnquiry": "For all Reservations or Events Enquiries please call or email us at",
+  "bookingEnquiry": "Planning a meal or organising a group? Give us a call or send us an email and we’ll be happy to help.",
   "mapEmbedUrl": "https://www.google.com/maps?q=Rosatos+Bar+%26+Restaurant,+7+Malin+Road,+Moville&output=embed",
   "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=7+Malin+Road,+Moville,+Co.+Donegal",
   "hours": [
@@ -47,26 +48,33 @@
   },
   "room": {
     "eyebrow": "The room",
-    "title": "Open fires, proper food, and a hundred thousand welcomes.",
-    "body": "Cosy bar & restaurant with open fires.",
+    "title": "Good food, good company, and a warm welcome.",
+    "body": "A favourite with locals, a welcome stop for visitors, and a place where good food brings people together.",
     "image": "/images/room.jpg",
-    "imageAlt": "Open fire in the stone hearth at Rosato\u2019s"
+    "imageAlt": "Open fire in the stone hearth at Rosato\u2019s, with the bar in the foreground"
+  },
+  "pint": {
+    "title": "Great pints.",
+    "body": "",
+    "image": "/images/pint.jpg",
+    "imageAlt": "A pint of Guinness on the bar at Rosato\u2019s"
   },
   "visit": {
     "eyebrow": "Visit",
-    "title": "Find us on Malin Road.",
+    "title": "Everything you need before you visit.",
     "parkingTip": "Street parking along Malin Road; easier after the school run."
   },
   "ordering": {
     "enabled": true,
     "mode": "collection",
     "eyebrow": "Order pizza",
-    "title": "Collection only.",
-    "intro": "Choose your pizzas online and collect from the bar. We don\u2019t deliver \u2014 pay when you pick up. Extra toppings and leave-offs are welcome.",
+    "title": "Make it your own with extra toppings or leave off anything you don’t fancy.",
+    "intro": "Order online, customise your pizza and collect from Rosato’s. No delivery — pick up at the bar.",
     "menuSectionId": "pizza",
     "leadMinutes": 30,
+    "leadNote": "Usually ready in around 30 minutes.",
     "kitchenCloses": "21:00",
-    "payNote": "Pay on collection \u2014 card or cash.",
+    "payNote": "Pay when you collect — card or cash.",
     "minOrder": 0,
     "successMessage": "Order received. We\u2019ll have it ready for collection.",
     "customizations": {
