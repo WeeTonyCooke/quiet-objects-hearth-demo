@@ -92,20 +92,25 @@ export function OrderPizza() {
                 {pizza.description ? <p className="order__item-desc">{pizza.description}</p> : null}
               </div>
 
-              {canCustomize ? (
+              <div className="order__actions">
                 <button
                   type="button"
                   className="btn btn--primary order__add"
-                  aria-expanded={isOpen}
-                  onClick={() => (isOpen ? closeCustomize() : openCustomize(pizza))}
+                  onClick={() => addItem(pizza)}
                 >
-                  {isOpen ? 'Close' : 'Customize'}
+                  Add
                 </button>
-              ) : (
-                <button type="button" className="btn btn--primary order__add" onClick={() => addItem(pizza)}>
-                  Add pizza
-                </button>
-              )}
+                {canCustomize ? (
+                  <button
+                    type="button"
+                    className="btn btn--ghost order__customize-btn"
+                    aria-expanded={isOpen}
+                    onClick={() => (isOpen ? closeCustomize() : openCustomize(pizza))}
+                  >
+                    {isOpen ? 'Close' : 'Customize'}
+                  </button>
+                ) : null}
+              </div>
 
               {isOpen && canCustomize ? (
                 <div className="order__customize">

@@ -1,13 +1,6 @@
 import { useMemo } from 'react'
 import { getTonight } from '../lib/programme.js'
 
-const KIND_LABEL = {
-  poker: '♠',
-  quiz: '?',
-  music: '♪',
-  other: '·',
-}
-
 export function WhatsOn({ venue }) {
   const { programme, social } = venue
   const tonight = useMemo(() => getTonight(programme), [programme])
@@ -18,11 +11,6 @@ export function WhatsOn({ venue }) {
       <div className="section__intro">
         <p className="eyebrow">{programme.eyebrow}</p>
         <h2 className="section__title">{programme.title}</h2>
-        {tonight.short ? (
-          <p className="section__body whats-on__tonight">
-            <strong>{tonight.label}</strong> {tonight.detail || tonight.short}
-          </p>
-        ) : null}
       </div>
 
       <ul className="programme">
@@ -33,9 +21,6 @@ export function WhatsOn({ venue }) {
               className={`programme__item${isToday ? ' is-today' : ''}`}
               key={`${event.day}-${event.name}-${event.time}`}
             >
-              <span className="programme__mark" aria-hidden="true">
-                {KIND_LABEL[event.kind] || '·'}
-              </span>
               <div>
                 <h3 className="programme__name">
                   <span className="programme__day">{event.dayLabel}</span> {event.name}

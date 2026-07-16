@@ -378,6 +378,9 @@ input {
 }
 
 .programme__item.is-today {
+  margin: 0 -0.65rem;
+  padding-left: 0.65rem;
+  padding-right: 0.65rem;
   background: rgba(224, 49, 69, 0.08);
   outline: 1px solid rgba(224, 49, 69, 0.28);
 }
@@ -996,23 +999,9 @@ input {
 }
 
 .programme__item {
-  display: grid;
-  grid-template-columns: 2.5rem 1fr;
-  gap: var(--space-2);
-  align-items: start;
+  display: block;
   padding: 1.35rem 0;
   border-bottom: 1px solid var(--line);
-}
-
-.programme__mark {
-  display: grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  color: var(--accent);
-  font-size: 0.95rem;
 }
 
 .programme__name {
@@ -1446,8 +1435,29 @@ input {
   font-size: 0.95rem;
 }
 
+.order__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .order__add {
-  min-width: 6.75rem;
+  min-width: 5.25rem;
+}
+
+.order__customize-btn {
+  min-width: 6.5rem;
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--ink);
+}
+
+.order__customize-btn:hover {
+  border-color: var(--accent-deep);
+  color: var(--accent-deep);
+  background: transparent;
 }
 
 .order__customize {
