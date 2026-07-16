@@ -30,8 +30,10 @@ function removersForPizza(pizza, removals) {
 }
 
 export function OrderPizza() {
-  const { enabled, ordering, customizations, extraPrice, pizzas, addItem, formatEuro } = useCart()
+  const { enabled, ordering, customizations, extraPrice, pizzas, addItem, refineItem, setOpen, formatEuro } =
+    useCart()
   const [activeName, setActiveName] = useState(null)
+  const [pendingLineId, setPendingLineId] = useState(null)
   const [draft, setDraft] = useState(emptyDraft)
 
   const extras = customizations?.extras || []
@@ -55,19 +57,40 @@ export function OrderPizza() {
 
   if (!enabled || !ordering) return null
 
-  function openCustomize(pizza) {
+  function closeCustomize({ openCart = false } = {}) {
+    setActiveName(null)
+    setPendingLineId(null)
+    setDraft(emptyDraft())
+    if (openCart) setOpen(true)
+  }
+
+  function handleAdd(pizza) {
+    if (activeName) {
+      // Previous add stays as-is; move on.
+      closeCustomize()
+    }
+    const lineId = addItem(pizza, { openCart: false })
+    if (!canCustomize) {
+      setOpen(true)
+      return
+    }
+    setPendingLineId(lineId)
     setActiveName(pizza.name)
     setDraft(emptyDraft())
   }
 
-  function closeCustomize() {
-    setActiveName(null)
-    setDraft(emptyDraft())
+  function keepAsIs() {
+    closeCustomize({ openCart: true })
   }
 
-  function confirmAdd() {
-    if (!activePizza) return
-    addItem(activePizza, draft)
+  function saveCustomizations() {
+    if (!activePizza || !pendingLineId) return
+    const hasChanges = draft.extras.length > 0 || draft.removals.length > 0 || draft.note.trim()
+    if (hasChanges) {
+      refineItem(pendingLineId, activePizza, draft)
+    } else {
+      setOpen(true)
+    }
     closeCustomize()
   }
 
@@ -96,24 +119,16 @@ export function OrderPizza() {
                 <button
                   type="button"
                   className="btn btn--primary order__add"
-                  onClick={() => addItem(pizza)}
+                  onClick={() => handleAdd(pizza)}
                 >
                   Add
                 </button>
-                {canCustomize ? (
-                  <button
-                    type="button"
-                    className="btn btn--ghost order__customize-btn"
-                    aria-expanded={isOpen}
-                    onClick={() => (isOpen ? closeCustomize() : openCustomize(pizza))}
-                  >
-                    {isOpen ? 'Close' : 'Customize'}
-                  </button>
-                ) : null}
               </div>
 
               {isOpen && canCustomize ? (
                 <div className="order__customize">
+                  <p className="order__customize-lead">Added. Want to customize?</p>
+
                   {leaveOffs.length > 0 ? (
                     <fieldset className="order__fieldset">
                       <legend>Leave off</legend>
@@ -179,9 +194,14 @@ export function OrderPizza() {
                       <span>This pizza</span>
                       <strong>{formatEuro(draftPrice)}</strong>
                     </p>
-                    <button type="button" className="btn btn--primary" onClick={confirmAdd}>
-                      Add pizza
-                    </button>
+                    <div className="order__customize-buttons">
+                      <button type="button" className="btn btn--ghost" onClick={keepAsIs}>
+                        Keep as is
+                      </button>
+                      <button type="button" className="btn btn--primary" onClick={saveCustomizations}>
+                        Save changes
+                      </button>
+                    </div>
                   </div>
                 </div>
               ) : null}

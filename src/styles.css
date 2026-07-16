@@ -85,10 +85,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body.nav-open {
-  overflow: hidden;
-}
-
 img,
 iframe {
   display: block;
@@ -295,14 +291,13 @@ input {
   display: none;
 }
 
-.site-header.is-scrolled .site-header__bar,
-.site-header:has(.site-nav.is-open) .site-header__bar {
+.site-header.is-scrolled .site-header__bar {
   display: block;
 }
 
 .site-header__inner {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: var(--space-2);
   max-width: var(--max);
@@ -389,79 +384,30 @@ input {
   color: var(--rosato-red);
 }
 
-.site-header__toggle {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  justify-self: end;
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.site-header__toggle span:not(.sr-only) {
-  display: block;
-  width: 1.35rem;
-  height: 1.5px;
-  background: currentColor;
-  transition: transform 0.3s var(--ease);
-}
-
-.site-header__toggle[aria-expanded='true'] span:nth-child(2) {
-  transform: translateY(3.75px) rotate(45deg);
-}
-
-.site-header__toggle[aria-expanded='true'] span:nth-child(3) {
-  transform: translateY(-3.75px) rotate(-45deg);
-}
-
+/* Mobile: brand only when scrolled — no hamburger / drawer on a short landing page */
 .site-nav {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  padding: var(--space-4) clamp(1rem, 3vw, 2rem);
-  background: rgba(243, 238, 230, 0.98);
-  transform: translateY(-0.5rem);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
-  grid-column: 1 / -1;
-}
-
-.site-nav.is-open {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
+  display: none;
 }
 
 .site-nav__links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 .site-nav__links a {
-  padding: 0.85rem 0;
-  font-size: 1.2rem;
+  padding: 0;
+  font-size: 0.95rem;
   text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  color: var(--ink);
+  color: inherit;
 }
 
 .site-nav__actions {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: var(--space-2);
+  flex-direction: row;
+  align-items: center;
+  gap: 0.65rem;
 }
 
 .site-nav__ghost,
@@ -1271,10 +1217,6 @@ input {
     padding-right: calc(4.35rem + 1.25rem);
   }
 
-  .site-header__toggle {
-    display: none;
-  }
-
   .events-cue {
     padding: 0 4.5rem;
   }
@@ -1284,38 +1226,13 @@ input {
   }
 
   .site-nav {
-    position: static;
+    display: flex;
     grid-column: 3;
     grid-row: 1;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     gap: 1.5rem;
-    padding: 0;
-    background: transparent;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
-
-  .site-nav__links {
-    flex-direction: row;
-    align-items: center;
-    gap: 1.25rem;
-  }
-
-  .site-nav__links a {
-    padding: 0;
-    font-size: 0.95rem;
-    border: 0;
-    color: inherit;
-  }
-
-  .site-nav__actions {
-    flex-direction: row;
-    align-items: center;
-    margin-top: 0;
-    gap: 0.65rem;
   }
 
   .site-nav__ghost,
@@ -1447,19 +1364,6 @@ input {
   min-width: 5.25rem;
 }
 
-.order__customize-btn {
-  min-width: 6.5rem;
-  border-color: var(--line-strong);
-  background: transparent;
-  color: var(--ink);
-}
-
-.order__customize-btn:hover {
-  border-color: var(--accent-deep);
-  color: var(--accent-deep);
-  background: transparent;
-}
-
 .order__customize {
   grid-column: 1 / -1;
   display: grid;
@@ -1467,6 +1371,20 @@ input {
   margin-top: 0.35rem;
   padding: 1rem 0 0.25rem;
   border-top: 1px solid var(--line);
+}
+
+.order__customize-lead {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.order__customize-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
 }
 
 .order__fieldset {

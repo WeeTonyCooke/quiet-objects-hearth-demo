@@ -54,6 +54,7 @@ export function CartProvider({ children, venue }) {
     const extras = Array.isArray(options.extras) ? options.extras : []
     const removals = Array.isArray(options.removals) ? options.removals : []
     const note = typeof options.note === 'string' ? options.note.trim() : ''
+    const openCart = options.openCart !== false
     const signature = lineSignature({ name: pizza.name, extras, removals, note })
     const unitPrice = unitPriceFor(pizza, extras, extraPrice)
 
@@ -77,7 +78,74 @@ export function CartProvider({ children, venue }) {
         },
       ]
     })
-    setOpen(true)
+    if (openCart) setOpen(true)
+    return signature
+  }
+
+  /** Peel one unit off `fromId` and re-add it with new toppings / note. */
+  function refineItem(fromId, pizza, options = {}) {
+    const extras = Array.isArray(options.extras) ? options.extras : []
+    const removals = Array.isArray(options.removals) ? options.removals : []
+    const note = typeof options.note === 'string' ? options.note.trim() : ''
+    const openCart = options.openCart !== false
+    const nextId = lineSignature({ name: pizza.name, extras, removals, note })
+    const unitPrice = unitPriceFor(pizza, extras, extraPrice)
+
+    if (nextId === fromId) {
+      if (openCart) setOpen(true)
+      return nextId
+    }
+
+    setItems((current) => {
+      const from = current.find((row) => row.id === fromId)
+      if (!from) {
+        const existing = current.find((row) => row.id === nextId)
+        if (existing) {
+          return current.map((row) => (row.id === nextId ? { ...row, qty: row.qty + 1 } : row))
+        }
+        return [
+          ...current,
+          {
+            id: nextId,
+            name: pizza.name,
+            description: pizza.description,
+            basePrice: parsePrice(pizza.price),
+            extras,
+            removals,
+            note,
+            unitPrice,
+            qty: 1,
+          },
+        ]
+      }
+
+      let next = current
+        .map((row) => (row.id === fromId ? { ...row, qty: row.qty - 1 } : row))
+        .filter((row) => row.qty > 0)
+
+      const existing = next.find((row) => row.id === nextId)
+      if (existing) {
+        next = next.map((row) => (row.id === nextId ? { ...row, qty: row.qty + 1 } : row))
+      } else {
+        next = [
+          ...next,
+          {
+            id: nextId,
+            name: pizza.name,
+            description: pizza.description,
+            basePrice: parsePrice(pizza.price),
+            extras,
+            removals,
+            note,
+            unitPrice,
+            qty: 1,
+          },
+        ]
+      }
+      return next
+    })
+    if (openCart) setOpen(true)
+    return nextId
   }
 
   function setQty(id, qty) {
@@ -107,6 +175,7 @@ export function CartProvider({ children, venue }) {
     open,
     setOpen,
     addItem,
+    refineItem,
     setQty,
     clear,
     formatEuro,
