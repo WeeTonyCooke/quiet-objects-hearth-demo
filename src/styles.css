@@ -220,10 +220,25 @@ input {
   font-weight: 500;
 }
 
-.events-cue__kind {
-  flex: 0 0 auto;
+.events-cue__name {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: min(12.5rem, 38vw);
+  overflow: hidden;
+  white-space: nowrap;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.events-cue__name-inner {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.events-cue__name.is-scroll .events-cue__name-inner {
+  padding-right: 1.25rem;
+  animation: cue-name-scroll 5.2s var(--ease) infinite;
 }
 
 .events-cue__dot {
@@ -248,12 +263,30 @@ input {
   opacity: 0.92;
 }
 
+@keyframes cue-name-scroll {
+  0%,
+  18% {
+    transform: translateX(0);
+  }
+  82%,
+  100% {
+    transform: translateX(var(--cue-shift, 0));
+  }
+}
+
 @keyframes cue-fade-in {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .events-cue__name.is-scroll .events-cue__name-inner {
+    animation: none;
+    padding-right: 0;
   }
 }
 
@@ -669,12 +702,12 @@ input {
   animation-delay: 0.2s;
 }
 
-.hero__tagline.hero__reveal {
+.hero__actions.hero__reveal {
   animation-delay: 0.45s;
 }
 
-.hero__actions.hero__reveal {
-  animation-delay: 0.6s;
+.hero__tagline.hero__reveal {
+  animation-delay: 0.7s;
 }
 
 .btn {

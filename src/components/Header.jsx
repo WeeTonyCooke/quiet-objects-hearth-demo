@@ -1,5 +1,42 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { getTickerItems } from '../lib/programme.js'
+
+function CueName({ name }) {
+  const outerRef = useRef(null)
+  const innerRef = useRef(null)
+  const [shift, setShift] = useState(0)
+
+  useLayoutEffect(() => {
+    const outer = outerRef.current
+    const inner = innerRef.current
+    if (!outer || !inner) return undefined
+
+    const measure = () => {
+      const delta = outer.clientWidth - inner.scrollWidth
+      setShift(delta < -1 ? delta : 0)
+    }
+
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(outer)
+    return () => observer.disconnect()
+  }, [name])
+
+  return (
+    <span
+      className={`events-cue__name${shift < 0 ? ' is-scroll' : ''}`}
+      ref={outerRef}
+    >
+      <span
+        className="events-cue__name-inner"
+        ref={innerRef}
+        style={shift < 0 ? { '--cue-shift': `${shift}px` } : undefined}
+      >
+        {name}
+      </span>
+    </span>
+  )
+}
 
 export function Header({ venue }) {
   const [scrolled, setScrolled] = useState(false)
@@ -19,7 +56,7 @@ export function Header({ venue }) {
     if (events.length < 2) return undefined
     const id = window.setInterval(() => {
       setIndex((value) => (value + 1) % events.length)
-    }, 4200)
+    }, 5200)
     return () => window.clearInterval(id)
   }, [events.length])
 
@@ -68,15 +105,15 @@ export function Header({ venue }) {
             <span className="events-cue__viewport">
               <span
                 className={`events-cue__line${current.highlight ? ' is-today' : ''}`}
-                key={`${current.day}-${current.kindLabel || current.text}-${current.time || ''}-${index}`}
+                key={`${current.day}-${current.name || current.text}-${current.time || ''}-${index}`}
               >
-                {current.kindLabel && current.time ? (
+                {current.name && current.time ? (
                   <>
                     <span className="events-cue__day">{current.day}</span>
                     <span className="events-cue__pipe" aria-hidden="true">
                       |
                     </span>
-                    <span className="events-cue__kind">{current.kindLabel}</span>
+                    <CueName name={current.name} />
                     <span className="events-cue__dot" aria-hidden="true">
                       •
                     </span>
