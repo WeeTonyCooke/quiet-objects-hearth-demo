@@ -533,69 +533,44 @@ input {
   text-align: center;
 }
 
-.hero--photo .hero__actions {
-  justify-content: center;
+.hero--photo .hero__tagline {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Desktop: copy left, façade right on the hero floor */
+.hero--photo .hero__actions {
+  justify-content: center;
+  margin-top: clamp(1.75rem, 4.5vh, 2.5rem);
+}
+
+/*
+  One composition at every width — designed for the phone in the hand.
+  Desktop scales the same stack; it does not invent a second layout.
+*/
 @media (min-width: 901px) {
   .hero--photo {
-    display: grid;
-    grid-template-columns: minmax(16rem, 0.78fr) minmax(24rem, 1.45fr);
-    grid-template-rows: none;
-    column-gap: clamp(0, 1vw, 0.75rem);
-    align-items: end;
-    padding-top: calc(var(--ticker-h) + 1.75rem);
-    padding-right: clamp(0.25rem, 1.5vw, 1rem);
-    background-color: var(--forest);
+    padding-top: calc(var(--ticker-h) + clamp(3rem, 8vh, 4.5rem));
   }
 
   .hero--photo .hero__media {
-    position: relative;
-    inset: auto;
-    grid-column: 2;
-    grid-row: 1;
-    justify-content: flex-start;
-    align-items: flex-end;
-    background-color: var(--forest);
-    min-height: calc(100svh - var(--ticker-h));
-    height: 100%;
-    overflow: visible;
+    min-height: 52svh;
   }
 
   .hero__facade {
-    width: 112%;
-    max-width: none;
-    height: auto;
-    margin-bottom: -1.65rem;
-    transform: translateY(0.85rem);
-    justify-content: flex-start;
-  }
-
-  .hero--photo .hero__media img {
-    width: 100%;
-    height: auto;
-    max-height: calc(100svh - var(--ticker-h) + 1.25rem);
-    object-position: left bottom;
-  }
-
-  .hero--photo .hero__veil {
-    display: none;
+    width: min(100%, 36rem);
   }
 
   .hero--photo .hero__content {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: center;
-    justify-self: start;
-    max-width: 26rem;
-    padding-bottom: clamp(2.5rem, 7vw, 4.5rem);
-    transform: none;
-    text-align: left;
+    max-width: 30rem;
   }
 
-  .hero--photo .hero__actions {
-    justify-content: flex-start;
+  .hero--photo .hero__veil {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 58, 49, 0.22) 0%,
+      transparent 12%,
+      transparent 100%
+    );
   }
 }
 
@@ -675,6 +650,9 @@ input {
 }
 
 .btn--on-hero {
+  min-height: 2.45rem;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.95rem;
   background: var(--bg);
   color: var(--accent-deep);
 }

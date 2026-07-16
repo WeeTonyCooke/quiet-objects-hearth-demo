@@ -2,6 +2,8 @@
 
 Hearth (neighbourhood bar) template reskinned for Rosato’s Bar & Restaurant, Moville.
 
+**Mobile-first.** Designed for the phone in the hand — one composition that scales up. Desktop does not invent a second layout.
+
 Live: https://rosatos-moville.netlify.app
 
 ```bash
