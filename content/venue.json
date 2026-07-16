@@ -52,6 +52,12 @@
     "image": "/images/room.jpg",
     "imageAlt": "Open fire in the stone hearth at Rosato\u2019s, with the bar in the foreground"
   },
+  "pint": {
+    "title": "Great pints.",
+    "body": "",
+    "image": "/images/pint.jpg",
+    "imageAlt": "A pint of Guinness on the bar at Rosato\u2019s"
+  },
   "visit": {
     "eyebrow": "Visit",
     "title": "Find us on Malin Road.",
