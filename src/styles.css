@@ -478,10 +478,12 @@ input {
   z-index: 0;
   background-color: var(--forest);
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
   overflow: hidden;
   min-height: 44svh;
+  padding-bottom: clamp(1.25rem, 4vh, 2rem);
 }
 
 .hero__facade {
@@ -490,7 +492,8 @@ input {
   justify-content: center;
   align-items: flex-end;
   width: min(100%, 42rem);
-  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
   margin-bottom: 0;
   transform: none;
 }
@@ -505,6 +508,18 @@ input {
   object-fit: contain;
   object-position: center bottom;
   animation: hero-fade 1.4s var(--ease) both;
+}
+
+.hero__tagline--under {
+  position: relative;
+  z-index: 3;
+  margin: 0.85rem auto 0;
+  max-width: 18rem;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  color: rgba(243, 238, 230, 0.78);
 }
 
 .hero--photo .hero__veil {
@@ -555,19 +570,21 @@ input {
     inset: auto;
     grid-column: 2;
     grid-row: 1;
-    justify-content: flex-start;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: flex-start;
     background-color: var(--forest);
     min-height: calc(100svh - var(--ticker-h));
     height: 100%;
     overflow: visible;
+    padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
   }
 
   .hero__facade {
     width: 112%;
     max-width: none;
     height: auto;
-    margin-bottom: -1.65rem;
+    flex: 0 1 auto;
+    margin-bottom: -0.35rem;
     transform: translateY(0.85rem);
     justify-content: flex-start;
   }
@@ -575,12 +592,19 @@ input {
   .hero--photo .hero__media img {
     width: 100%;
     height: auto;
-    max-height: calc(100svh - var(--ticker-h) + 1.25rem);
+    max-height: calc(100svh - var(--ticker-h) - 3.5rem);
     object-position: left bottom;
   }
 
   .hero--photo .hero__veil {
     display: none;
+  }
+
+  .hero__tagline--under {
+    margin: 0.5rem 0 0 0.35rem;
+    max-width: 20rem;
+    padding: 0;
+    text-align: left;
   }
 
   .hero--photo .hero__content {
@@ -627,6 +651,10 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  margin-top: var(--space-3);
+}
+
+.hero--photo .hero__actions {
   margin-top: var(--space-3);
 }
 

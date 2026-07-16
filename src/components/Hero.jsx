@@ -7,9 +7,18 @@ export function Hero({ venue }) {
       className={`hero${hasPhoto ? ' hero--photo' : ' hero--paint'}`}
       aria-label="Welcome"
     >
+      <div className="hero__content">
+        <h1 className="hero__name hero__reveal">{venue.name}</h1>
+        <div className="hero__actions hero__reveal">
+          <a className="btn btn--on-hero" href={venue.bookingUrl}>
+            Book a table
+          </a>
+        </div>
+      </div>
+
       {hasPhoto ? (
-        <div className="hero__media" aria-hidden="true">
-          <div className="hero__facade">
+        <div className="hero__media">
+          <div className="hero__facade" aria-hidden="true">
             <img
               src={venue.hero.image}
               alt=""
@@ -18,19 +27,12 @@ export function Hero({ venue }) {
               fetchPriority="high"
             />
           </div>
-          <div className="hero__veil" />
+          <p className="hero__tagline hero__tagline--under hero__reveal">{venue.tagline}</p>
+          <div className="hero__veil" aria-hidden="true" />
         </div>
-      ) : null}
-
-      <div className="hero__content">
-        <h1 className="hero__name hero__reveal">{venue.name}</h1>
+      ) : (
         <p className="hero__tagline hero__reveal">{venue.tagline}</p>
-        <div className="hero__actions hero__reveal">
-          <a className="btn btn--on-hero" href={venue.bookingUrl}>
-            Book a table
-          </a>
-        </div>
-      </div>
+      )}
     </section>
   )
 }
