@@ -25,11 +25,11 @@
     {
       "day": 6,
       "dayLabel": "Saturday",
-      "name": "Live Music",
+      "name": "Seán Óg",
       "time": "22:00",
       "kind": "music",
-      "cue": "Live Music · 22:00",
-      "detail": "Live Music Saturdays · 22:00"
+      "cue": "Seán Óg · 22:00",
+      "detail": "Seán Óg · Saturdays · 22:00"
     }
   ],
   "board": [
